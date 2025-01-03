@@ -1,0 +1,50 @@
+
+Ground
+
+A - Ittoryu Combo
+
+B - Nitoryu Combo
+
+Down + B - Santoryu Combo
+
+C - Sen Hachiju Pound Hoo 
+-500 power
+
+S - Power Charge
+
+Air
+
+A - Ittoryu
+
+B - Nitoryu
+
+C - Hyou Kin dama 
+
+
+SPECIALS:
+
+D,DF,F,a - Ittoryu: Daishinkan
+-1000 power
+
+D,DB,B,a - Ittoryu: Shi Shi-shi Sonson
+-1500 power
+
+D,DF,F,b - Nitoryu: Rashomon
+-1000 power
+
+D,DB,B,b - Nitoryu: Nigori Zake
+-1000 power
+
+D,DF,F,c - Santoryu: Kokujou Oo Tatsumaki
+-1500 power
+
+D,DB,B,c - Santoryu Ougi:Rokudou no Tsuji
+-2000 power
+
+SUPER: 
+
+D,DF,F,D,DF,F,a+b - Santoryu Ougi: Ichidai Sanzen Daizen Sekai
+-3000 power
+
+Holddown + S Haki mode
+improved attack and defence.

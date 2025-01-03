@@ -1,0 +1,29 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Roronoa Zoro"
+displayname = "Zoro"
+versiondate = 18/09/2017
+mugenversion = 1.0
+pal.defaults = 1
+
+[Files]
+sprite = Zoro Oni.sff
+anim = Zoro Oni.air
+sound = Zoro Oni.snd
+cmd = Zoro Oni.cmd
+cns = Zoro Oni.cns
+stcommon = common1.cns
+st = Zoro Oni.cns
+st1 = IA.cns
+st2 = Specials.cns
+st3 = Supers.cns
+pal1 = 1.act
+pal2 = 2.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 
