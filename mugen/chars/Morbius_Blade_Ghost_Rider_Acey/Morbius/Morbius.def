@@ -1,0 +1,36 @@
+;=======================================;
+;           {character name}            ;
+;             for WinMUGEN              ;
+;     http://www.scruffydragon.com/     ;
+;=======================================;
+
+[Info]
+name ="Morbius"
+displayname ="Morbius"
+versiondate =08/28/2013
+mugenversion =1.0
+author ="Blade, Ghost Rider, Acey, Blagoy, ZVitor, Pilgrim, jspiderman17, candido159, Bigpimp"
+pal.defaults	=1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+sprite   =MarvelTemplate.sff
+anim     =MarvelTemplate.air
+sound    =MarvelTemplate.snd
+stcommon =DCvsMarvelcommon1.cns
+cmd      =MarvelTemplate.cmd
+cns      =MarvelTemplate.cns
+st       =basics.st
+pal1=1.act
+pal2=2.act
+pal3=3.act
+pal4=4.act
+pal5=5.act
+pal6=6.act
+st1=specials.st
+st2=hypers.st
+st3=overrides.st
+st4=amalgam.st
+
+[Arcade]
+intro.storyboard =
+ending.storyboard=

@@ -1,0 +1,76 @@
+; {character}'s constants and state file.
+
+[Data]
+life = 1000			;Amount of life to start with
+attack = 100			;attack power (more is stronger)
+defence = 100			;defensive power (more is stronger)
+fall.defence_up = 50		;Percentage to increase defense everytime player is knocked down
+liedown.time = 50		;Time which player lies down for, before getting up
+airjuggle = 15			;Number of points for juggling
+sparkno = 2			;Default hit spark number for HitDefs
+guard.sparkno = 40		;Default guard spark number
+KO.echo = 0			;1 to enable echo on KO
+volume = 255			;Volume offset (negative for softer)
+
+;Variables with this index and above will not have their values
+;reset to 0 between rounds or matches. There are 60 int variables,
+;indexed from 0 to 59, and 40 float variables, indexed from 0 to 39.
+;If omitted, then it defaults to 60 and 40 for integer and float
+;variables repectively, meaning that none are persistent, i.e. all
+;are reset. If you want your variables to persist between matches,
+;you need to override state 5900 from common1.cns.
+IntPersistIndex = 60
+FloatPersistIndex = 40
+
+
+[Size]
+xscale =  1          ;Horizontal scaling factor.
+yscale = 1            ;Vertical scaling factor.
+ground.back = 12      ;Player width (back, ground)
+ground.front = 16     ;Player width (front, ground)
+air.back = 12         ;Player width (back, air)
+air.front = 16        ;Player width (front, air)
+height = 90           ;Height of player (for opponent to jump over)
+attack.dist = 160     ;Default attack distance
+proj.attack.dist = 90 ;Default attack distance for projectiles
+proj.doscale = 0      ;Set to 1 to scale projectiles too
+head.pos = 10, -84  ;Approximate position of head
+mid.pos = 0, -44     ;Approximate position of midsection
+shadowoffset = 0      ;Number of pixels to vertically offset the shadow
+draw.offset = 0,0     ;Player drawing offset in pixels (x, y)
+
+[Velocity]
+walk.fwd  = 2.5          ;Walk forward
+walk.back = -2.0          ;Walk backward
+run.fwd  = 7.5, 0         ;Run forward (x, y)
+run.back = -8,-4.3      ;Hop backward (x, y)
+jump.neu = 0,-10
+jump.back =  -3.5,-10
+jump.fwd = 4,-10
+runjump.fwd = 5,-9
+runjump.back = -3.5,-10
+airjump.neu = 0,-8.3	;.
+airjump.back = -2.9	;Air jump speeds (opt)
+airjump.fwd = 2.9      ;.
+
+[Movement]
+airjump.num = 0      ;Number of air jumps allowed (opt)
+airjump.height = 40
+yaccel = .5
+stand.friction = .80
+crouch.friction = .83
+;air.friction = .80;Friction coefficient when crouching
+
+[Quotes]
+victory1 = "I want Beer!"
+victory2 = "I'm the best there is at what I do."
+victory3 = "Rookie!"
+victory4 = "You're outta your league, bub."
+victory5 = "My healin' factor ain't necessary for this!"
+victory6 = "Now let's get down to some slicin' and dicin'!"
+victory7 = "Now, my claws are gonna do the talkin'!"
+victory8 = "You shouldn't mess with the big boys!"
+victory9 = "I ain't no runt! But I'll slice ya' into one!"
+victory10 = "Ya gotta beat the best to be the best!"
+victory11 = "I'm the best at what I do. And what I do ... isn't very nice."
+victory12 = "Now stay down before I cut you into pieces."
