@@ -1,0 +1,699 @@
+;---------------------------------------------------------------------------
+;Insideout Body Drill
+[Statedef 3000]
+Type = S
+Movetype = A
+Physics = N
+Velset = 0,0
+ctrl = 0
+anim =3000
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 =  AnimElem = 3
+time =  40
+anim =  s8205
+sound = S3000,0
+pos = 0,-40
+movetime = 0
+darken = 1
+p2defmul = 0
+poweradd = -1000
+unhittable = 1
+[State 4500, 0]
+type = notHitBy
+trigger1 =AnimElem =1
+time = 16
+value = SCA
+ignorehitpause = 1
+[State 0, Helper]
+type = Helper
+trigger1 =  AnimElem = 3 ;player
+name ="Hyper fx"
+ID = 9600
+stateno = 9600
+pos = 0,0
+postype = left    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[state 620, 1]
+type = hitdef
+trigger1 = AnimElem = 9
+attr = S, HA
+damage = Floor(100/(1+(var(32)/5.0))),6
+getpower = 0,0
+givepower = 20,7
+guarDFlag = ha
+priority = 4, hit
+pausetime = 8,16
+sparkno = s8010 + (random%6)
+guard.sparkno = s8040
+sparkxy = -10, -40
+hitsound = s2,7
+guardsound = 6, 0
+animtype = heavy
+ground.type = low
+ground.slidetime = 15
+ground.hittime  = 18
+ground.velocity = -10
+air.type = low
+air.velocity = -3,-1.5
+air.fall = 1
+envshake.time = 15
+envshake.ampl = 7
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = AnimElem = 7
+anim = 7530
+ID = 7530
+pos = 40,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+bindtime = -1
+removetime = -1
+sprpriority = 20
+ownpal =1
+removeongethit = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = S3000,3
+volume = 255
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = 6
+
+[State 1520, normal]
+type = AfterImage
+trigger1 = AnimElem = 2
+Time = 150
+length = 20
+PalBright   =   0,  0,  0
+PalContrast = 200,200,200
+PalAdd      =  0, 0, 0
+PalMul      = .95,.95,.95
+TimeGap  = 1
+length = 20
+PalBright   =   0,  0,  0
+PalContrast = 200,255,255
+PalAdd      =  0, 0, 0
+PalMul      = .95,.95,.95
+TimeGap  = 1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !Time
+value = S3000,1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 3001
+
+;---------------------------------------------------------------------------
+;Insideout Body Drill
+[Statedef 3001]
+Type = S
+Movetype = A
+Physics = N
+ctrl = 0
+anim =3001
+
+[state 620, 1]
+type = hitdef
+trigger1 = Time%3=0
+attr = S, HA
+damage = Floor(20/(1+(var(32)/5.0))),4
+getpower = 0,0
+givepower = 20,7
+guarDFlag = ha
+priority = 7, hit
+pausetime = 6,4
+sparkno = s8010 + (random%6)
+guard.sparkno = s8040
+sparkxy = -10, -40
+hitsound = s2,7
+guardsound = 6, 0
+animtype = heavy
+ground.type = low
+ground.slidetime = 15
+ground.hittime  = 18
+ground.velocity = -6
+air.type = low
+air.velocity = -5,-0.5
+air.fall = 1
+envshake.time = 15
+envshake.ampl = 7
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = Time = 60
+value = 3002
+
+;---------------------------------------------------------------------------
+;IBD end
+[Statedef 3002]
+Type = S
+Movetype = A
+Physics = S
+ctrl = 0
+anim =3002
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = !time
+id = 7530
+
+[state 620, 1]
+type = hitdef
+trigger1 = !time
+attr = S, HA
+damage = Floor(20/(1+(var(32)/5.0))),4
+getpower = 0,0
+givepower = 20,7
+guarDFlag = ha
+priority = 7, hit
+pausetime = 6,4
+sparkno = s8010 + (random%6)
+guard.sparkno = s8040
+sparkxy = -10, -40
+hitsound = s2,7
+guardsound = 6, 0
+animtype = heavy
+ground.type = low
+ground.slidetime = 15
+ground.hittime  = 18
+ground.velocity = -6
+air.type = low
+air.velocity = -4,-0.5
+air.fall = 1
+envshake.time = 15
+envshake.ampl = 7
+fall = 1
+
+
+[State 0, Explod]
+type = Explod
+trigger1 =Time=5
+anim = 8300
+ID = 8300
+pos = 0,-3
+postype = p1  ;p2,front,back,left,right
+facing = 1
+bindtime = 1
+vel = -1,0
+accel = 0,0
+scale = 1,1
+sprpriority = 10
+ownpal = 1
+removeongethit = 0
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = !time
+value = S101,0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = !AnimTime
+value = 0
+ctrl = 1
+
+;-----------------------------------------------------------------------
+;Hyper combo Finish
+[Statedef 8400]
+type = S
+movetype = I
+physics = N
+anim = 9999 ;Invisible anim.
+
+[State 0, PalFXWiz]
+type = AllPalFX
+trigger1 = Time = 10
+time = 80
+add = 0,0,0
+mul = 256,256,256
+sinadd = 255,255,255,160
+invertall = 0
+color = 256
+
+[State 8400: EnvShake]
+type = EnvShake
+trigger1 = (!Time)
+time = 12
+freq = 120
+ampl = -3
+phase = 90
+
+[State 3315, 15]
+type = Explod
+trigger1 = Time = 0
+ID = 8400
+anim = 8400
+postype = Back
+sprpriority = -2
+ownpal = 1
+ignorehitpause = 1
+bindtime = -1
+removetime = 72
+pos=root,var(48)/2,root,var(49)/2
+Scale =(root,var(48)/160)*.5,(root,var(48)/160)*.5
+
+[state 8010]
+type = explod
+trigger1 = time = 0
+pausemovetime = 100
+supermovetime = 100
+removetime = -2
+bindtime = -1
+anim = 30000+(Root,Stateno)
+pos = 160,120
+postype = left
+facing = 1
+scale = 0,0
+sprpriority = 300
+id = 30000
+removeongethit = 1
+
+[state 8010]
+type = modifyexplod
+trigger1 = 1
+id = 30000
+scale = time/6.0,time/9.0
+
+[State 3315, 16]
+type = PlaySnd
+trigger1 = !time
+value = s8400,0
+persistent = 0
+ignorehitpause = 1
+volume = 255
+
+;-----------------------------------------------------------------------
+;Super combo Finish
+[Statedef 8420]
+type = S
+movetype = I
+physics = N
+anim = 9999 ;Invisible anim.
+
+[State 0, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+pos = 0,0
+ignorehitpause = 1
+
+[State 0, BGPalFX]
+type = BGPalFX
+trigger1 = 1
+time = 10
+add = -20,-20,-20
+color = 0
+
+[State 632, 1]
+type = palfx
+trigger1 = time > 0
+time = 1
+add = -time*10,-time*10,-time*10
+
+[State 3315, 15]
+type = Explod
+trigger1 = Time = 0
+ID = 8420
+anim = 8420
+postype = Back
+pos = 0,0
+sprpriority = -105
+ownpal = 0
+ignorehitpause = 1
+bindtime = -1
+removetime = 100
+
+[State 3315, 16]
+type = PlaySnd
+trigger1 = (NumExplod(8420) != 0)
+value = s8420,0
+persistent = 0
+ignorehitpause = 1
+volume = 255
+
+[State -3, 1]
+type = RemoveExplod
+trigger1 = RoundState = 4
+ID = 8420
+
+;-----------------------------------------------------------------------
+;Hyper FX
+[Statedef 9600]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoBG
+flag2= NoFg
+flag3= NoBarDisplay
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 7000
+ID = 7000
+postype = left
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -2
+supermovetime = 40
+pausemovetime = 40
+scale=(root,var(48)/160)*.5,(root,var(49)/120)*.5
+pos=root,var(48)/2,root,var(49)/2
+sprpriority = -10
+ownpal = 1
+
+
+[State 0, Explod]
+type = Explod
+trigger1 = !time
+anim = 7005
+ID = 7005
+postype = left  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = -1
+vel = 0,0
+accel = 0,0
+random = 0,0
+removetime = -1
+supermovetime = 0
+pausemovetime = 0
+scale=root,var(48)/280,root,var(49)/200
+pos=root,var(48)/2,root,var(49)/2
+sprpriority = -10
+ownpal = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root, MoveType = H || root,Stateno <3000
+trigger2 = root,NumHelper(8400)=1
+value =  9601
+ctrl = 0
+
+;-----------------------------------------------------------------------
+;Hyper FX end
+[Statedef 9601]
+type = S
+movetype = I
+physics = N
+anim = 9999
+
+[State 0, PalFXWiz]
+type = AllPalFX
+triggerAll = root,NumHelper(8400)=0
+trigger1 = !time
+time = 20
+add = 255,255,255
+mul = 256,256,256
+sinadd = -255,-255,-255,80
+invertall = 0
+color = 256
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 =!time
+value = S3000,2
+
+[state 8010]
+type = modifyexplod
+trigger1 = 1
+id = 7005
+scale = 1.0,1.0+time/-15.0
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time = 15
+
+
+
+
+
+;---------------------------------------------------------------------------
+; Override common states (use same number to override) :
+;---------------------------------------------------------------------------
+;#######################################################################################
+;#######################################################################################
+;Dano Acumulado
+[Statedef 89000]
+anim = 9999;Invisible anim
+
+[State 89000, BoundToRoot]
+Type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 89000]
+Type = VarSet
+trigger1 = 1
+var(0) = Root, Var(46)
+;Pega o Valor do último dano causado pelo Player
+[State 89000, Reseta var(1)]
+Type = VarSet
+trigger1 = parent, numtarget = 0
+var(1) = 0
+
+[State 89000, Destroy meus explods]
+Type = RemoveExplod
+trigger1 = var(0) > 0
+id = 9000
+
+[State 89000, Cria helper do dano desse ataque]
+Type = Helper
+trigger1 = var(0) > 0
+id = 89001
+stateno = 89001
+
+[State 89000, Acumula o dano]
+Type = VarSet
+trigger1 = var(0) > 0
+var(1) = var(1) + var(0)
+
+;Dano Acumulado
+[State 89000, Digito 0]
+Type = Explod
+trigger1 = var(0) > 0
+anim = 9020 + var(1) % 10
+id = 9000
+pos = 12 * -root, facing, -90
+postype = p2
+removetime = 60
+ignorehitpause = 1
+sprpriority = 0
+ontop = 1
+scale = 0.2, 0.2
+vel = 0, -3
+Accel = 0,0.1
+shadow = 0,0,0
+ownpal = 0
+facing = -root, facing
+
+[State 89000, Digit 1]
+Type = Explod
+trigger1 = var(0) > 0
+trigger1 = var(1) >= 10
+anim = 9020 + floor(var(1) / 10 + 0.5) % 10
+id = 9000
+pos = 4 * -root, facing, -90
+postype = p2
+removetime = 60
+ignorehitpause = 1
+sprpriority = 0
+ontop = 1
+scale = 0.2, 0.2
+vel = 0, -3
+Accel = 0,0.1
+shadow = 0,0,0
+ownpal = 0
+facing = -root, facing
+
+[State 89000, Digit 2]
+Type = Explod
+trigger1 = var(0) > 0
+trigger1 = var(1) >= 100
+anim = 9020 + floor(var(1) / 100 + 0.5) % 10
+id = 9000
+pos = -4 * -root, facing, -90
+postype = p2
+removetime = 60
+ignorehitpause = 1
+sprpriority = 0
+ontop = 1
+scale = 0.2, 0.2
+vel = 0, -3
+Accel = 0,0.1
+shadow = 0,0,0
+ownpal = 0
+facing = -root, facing
+
+[State 89000, Digit 3]
+Type = Explod
+trigger1 = var(0) > 0
+trigger1 = var(1) >= 1000
+anim = 9020 + floor(var(1) / 1000 + 0.5) % 10
+id = 9000
+pos = -12 * -root, facing, -90
+postype = p2
+removetime = 60
+ignorehitpause = 1
+sprpriority = 0
+ontop = 1
+scale = 0.2, 0.2
+vel = 0, -3
+Accel = 0,0.1
+shadow = 0,0,0
+ownpal = 0
+facing = -root, facing
+
+[State 0, VarSet]
+type = null;VarSet
+trigger1 = time = 0
+fv = 10
+value = 2
+ignorehitpause = 1
+
+[State 0, VarAdd]
+type = null;VarAdd
+trigger1 = fvar(10)>1
+fv = 10
+value = -0.2
+ignorehitpause = 1
+
+[State 0, VarSet]
+type = null;VarSet
+trigger1 = fvar(10) = 1
+fv = 10
+value = 1
+ignorehitpause = 1
+
+[State 0, ModifyExplod]
+type = null;ModifyExplod
+trigger1 = 1
+ID = 9000
+scale = fvar(10),fvar(10)
+
+;-----------------------------------------------------------------------------------
+;Dano normal
+[statedef 89001]
+anim = 9999;Invisible anim
+
+[State 89001, BoundToRoot]
+Type = BindToRoot
+trigger1 = 1
+pos = 0,0
+
+[State 89001, Pega o Valor do último dano causado pelo Player]
+Type = VarSet
+trigger1 = Root, Var(46)
+var(0) = Root, Var(46)
+
+[State 89001, Random Vel X]
+type = VarSet
+trigger1 = 1
+fvar(0) = 3 + 1.5 * (random > 500) * root, facing
+
+;Dano Causado
+[State 89001, Digito 0]
+Type = Explod
+trigger1 = time = 0
+anim = 9000 + var(0) % 10
+pos = 12 * -root, facing, -30
+postype = p2
+removetime = 60
+ignorehitpause = 1
+vel = fvar(0),-8
+scale = 0.15, 0.15
+accel = 0,.3
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+facing = -root, facing
+
+[State 89001, Digit 1]
+Type = Explod
+trigger1 = var(0) > 10
+trigger1 = time = 0
+anim = 9000 + floor(var(0) / 10 + 0.5) % 10
+pos = 4 * -root, facing, -30
+postype = p2
+removetime = 60
+ignorehitpause = 1
+vel = fvar(0),-8
+scale = 0.15, 0.15
+accel = 0,.3
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+facing = -root, facing
+
+[State 89001, Digit 2]
+Type = Explod
+trigger1 = var(0) > 100
+trigger1 = time = 0
+anim = 9000 + floor(var(0) / 100 + 0.5) % 10
+pos = -4 * -root, facing, -30
+postype = p2
+removetime = 60
+ignorehitpause = 1
+vel = fvar(0),-8
+scale = 0.15, 0.15
+accel = 0,.3
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+facing = -root, facing
+
+[State 89001, Digit 3]
+Type = Explod
+trigger1 = var(0) >= 1000
+trigger1 = time = 0
+anim = 9000 + floor(var(0) / 1000 + 0.5) % 10
+pos = -12 * -root, facing, -30
+postype = p2
+removetime = 60
+ignorehitpause = 1
+vel = fvar(0),-8
+scale = 0.15, 0.15
+accel = 0,.3
+sprpriority = 0
+ontop = 1
+shadow = 0,0,0
+ownpal = 1
+facing = -root, facing
+
+[State 89001, DestroySelf]
+Type = DestroySelf
+trigger1 = time = 1
+
+;#######################################################################################
+;#######################################################################################
+;#######################################################################################

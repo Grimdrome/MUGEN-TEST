@@ -1,0 +1,25 @@
+[Info]
+name = "wadafak"
+displayname = "wadafak"
+versiondate = 1,2,3
+mugenversion = 06,14,2003
+author = "O Ilusionista"
+;ai.author = "vo-jk"
+pal.defaults = 2,1
+localcoord=320,240
+[Files]
+sprite = sys\seila.sff
+anim = sys\seila.air
+sound = sys\seila.snd
+cmd = sys\seila.txt
+cns = sys\seila.cns
+stcommon = sys\seila_common.cns
+st = sys\seila.cns
+st1 = sys\specials.cns
+st2 = sys\hypers.cns
+pal1 = act\teste.act
+pal2 = act\teste2.act
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 
