@@ -31,7 +31,8 @@ Example for a Mugen Repository to better track and move info across computers. P
 <br/>
 <br/>
 <br/>
-If a character/stage has an issue. The issue can be put into the "Issues" tab and be looked at a later date.
+If a character/stage has an issue. The issue can be put into the "Issues" tab and be looked at a later date.<br/>
+<br/>
 <br/>
 <br/>
 **DO NOT TOUCH THE OTHER FOLDERS OR FILES UNLESS YOU KNOW WHAT YOU'RE DOING
