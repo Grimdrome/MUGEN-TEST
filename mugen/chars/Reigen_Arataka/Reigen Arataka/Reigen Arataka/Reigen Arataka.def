@@ -1,0 +1,29 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Reigen"
+displayname ="Reigen"
+versiondate =18/08/2020
+mugenversion =1.0
+author ="RenounMugen"
+pal.defaults =1	
+
+[Files]
+sprite =Reigen Arataka.sff
+anim =Reigen Arataka.air
+sound =Reigen Arataka.snd
+cmd =Reigen Arataka.cmd
+cns =Reigen Arataka.cns
+stcommon =common1.cns
+st =Reigen Arataka.cns
+pal1=1.act
+st1=IA.cns
+st2=Specials.cns
+st3=Supers.cns
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 

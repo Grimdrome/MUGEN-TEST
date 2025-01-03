@@ -1,0 +1,26 @@
+
+A - Combo 1
+
+B - Combo 2
+
+C - Mob !!
+
+S - Power Charge
+
+SPECIALS:
+
+D,DF,F,a - Banishing Salt Punch
+
+D,DB,B,a - Hypnosis Punch
+
+D,DF,F,b - Cheeseburger Tornado
+
+D,DB,B,b - Combo Kick
+
+D,DF,F,c - Mob Telekenesis Push
+
+D,DB,B,c - Mob Telekenesis
+
+SUPER: 
+
+x - Self-Defense Rush
