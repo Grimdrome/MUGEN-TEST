@@ -1,0 +1,38 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Pizza Tower - Peppino"
+displayname = "Peppino"
+versiondate = 04,14,2002
+mugenversion = 04,14,2002  
+author = "AngryBirdCooler"
+pal.defaults = 1,2,3,4,5,6,7,8,9,10,11,12
+
+[Files]
+sprite = player.sff
+anim = player.air
+sound = player.snd
+cmd = player.cmd
+cns = player.cns
+stcommon = common1.cns
+st = player.cns
+st1 = special.cns
+st2 = hyper.cns
+pal1 = Pal/Pal2.act
+pal2 = Pal/Pal1.act
+pal3 = Pal/Pal3.act
+pal4 = Pal/Pal4.act
+pal5 = Pal/Pal5.act
+pal6 = Pal/Pal6.act
+pal7 = Pal/Pal7.act
+pal8 = Pal/Pal8.act
+pal9 = Pal/Pal9.act
+pal10 = Pal/Pal10.act
+pal11 = Pal/Pal11.act
+pal12 = Pal/Pal12.act
+[Arcade]
+;intro.storyboard = 
+;ending.storyboard = 
