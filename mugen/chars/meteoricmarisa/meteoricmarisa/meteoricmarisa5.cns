@@ -1,0 +1,3071 @@
+;Hisoutensoku Magic System
+;------------------------------ 
+[StateDef 6900]
+Type    = A
+Movetype= I
+Physics = N
+Anim = 6900
+
+[State 6900, PosAdd]
+Type = PosAdd
+TriggerAll = NumEnemy > 0
+Trigger1 = Floor(P2Dist X) != 0
+Trigger2 = Floor(P2Dist Y) != 0
+X = Floor(P2Dist X)
+Y = Floor(P2Dist Y)
+
+[State -2, VarSet]
+Type = VarSet
+TriggerAll = NumPartner
+TriggerAll = Root,ID < partner,ID
+Trigger1 = partner,Alive = 0
+fvar(9) = 0
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6902) = 0
+Anim = 6902
+ID = 6902
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 199
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [0,999]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6904) = 0
+Anim = 6904
+ID = 6904
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [1000,1999]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6905) = 0
+Anim = 6905
+ID = 6905
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [2000,2999]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6906) = 0
+Anim = 6906
+ID = 6906
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [3000,3999]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6907) = 0
+Anim = 6907
+ID = 6907
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [4000,4999]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6908) = 0
+Anim = 6908
+ID = 6908
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power >= 5000
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6909) = 0
+Anim = 6909
+ID = 6909
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power >= 5000 || Root,Power = Root,PowerMax
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6903) = 0
+Trigger1 = FVar(9) = 0
+Anim = 6903
+ID = 6903
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 201
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6902) = 0
+Anim = 6902
+ID = 6902
+Pos = -(Root,var(38)), (Root,var(39))
+PosType = Right
+SprPriority = 199
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [0,999]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6904) = 0
+Anim = 6904
+ID = 6904
+Pos = -(Root,var(38))+168, (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = 0
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [1000,1999]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6905) = 0
+Anim = 6905
+ID = 6905
+Pos = -(Root,var(38))+168, (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = 0
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [2000,2999]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6906) = 0
+Anim = 6906
+ID = 6906
+Pos = -(Root,var(38))+168, (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = 0
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [3000,3999]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6907) = 0
+Anim = 6907
+ID = 6907
+Pos = -(Root,var(38))+168, (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = 0
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power = [4000,4999]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6908) = 0
+Anim = 6908
+ID = 6908
+Pos = -(Root,var(38))+168, (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = 0
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power >= 5000
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6909) = 0
+Anim = 6909
+ID = 6909
+Pos = -(Root,var(38))+168, (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = 0
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Power >= 5000 || Root,Power = Root,PowerMax
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6903) = 0
+Trigger1 = FVar(9) = 0
+Anim = 6903
+ID = 6903
+Pos = -(Root,var(38))+168, (Root,var(39))
+PosType = Right
+SprPriority = 201
+Facing = 0
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+;--------------------
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6902) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+ID = 6902
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6904) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Power != [0,999]
+ID = 6904
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6905) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Power != [1000,1999]
+ID = 6905
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6906) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Power != [2000,2999]
+ID = 6906
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6907) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Power != [3000,3999]
+ID = 6907
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6908) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Power != [4000,4999]
+ID = 6908
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6909) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Power < 5000
+ID = 6909
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6903) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = !(Root,Power >= 5000)
+Trigger4 = !(Root,Power = Root,PowerMax)
+Trigger5 = FVar(9)
+ID = 6903
+
+[State -2, ParentVarSet]
+Type = ParentVarSet
+Trigger1 = 1
+var(38) = Root,var(38)
+IgnoreHitPause = 1
+
+[State -2, ParentVarSet]
+Type = ParentVarSet
+Trigger1 = 1
+var(39) = Root,var(39)-(Ceil(FVar(9)*16))
+IgnoreHitPause = 1
+
+[State 6900, ParentVarSet]
+Type = ParentVarSet
+Trigger1 = Parent,Var(40) < 0
+var(40) = 0
+
+[State 6900, ParentVarSet]
+Type = ParentVarSet
+Trigger1 = Parent,Var(40) > 1000
+var(40) = 1000
+
+;--------------------
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) <= 1000
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6915) = 0
+Anim = 6915
+ID = 6915
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];1P?????? ?(??4)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [800,999]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6914) = 0
+Anim = 6914
+ID = 6914
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];1P?????? ?(??3)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [600,799]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6913) = 0
+Anim = 6913
+ID = 6913
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];1P?????? ?(??2)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [400,599]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6912) = 0
+Anim = 6912
+ID = 6912
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];1P?????? ?(??1)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [200,399]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6911) = 0
+Anim = 6911
+ID = 6911
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];1P?????? ?(??0)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [0,199]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6910) = 0
+Anim = 6910
+ID = 6910
+Pos = (Root,var(38)), (Root,var(39))
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];2P?????? ?(??5)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) >= 1000
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6915) = 0
+Anim = 6915
+ID = 6915
+Pos = -(Root,var(38)), (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];2P?????? ?(??4)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [800,999]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6914) = 0
+Anim = 6914
+ID = 6914
+Pos = -(Root,var(38)), (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];2P?????? ?(??3)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [600,799]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6913) = 0
+Anim = 6913
+ID = 6913
+Pos = -(Root,var(38)), (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];2P?????? ?(??2)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [400,599]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6912) = 0
+Anim = 6912
+ID = 6912
+Pos = -(Root,var(38)), (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];2P?????? ?(??1)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [200,399]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6911) = 0
+Anim = 6911
+ID = 6911
+Pos = -(Root,var(38)), (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod];2P?????? ?(??0)
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(40) = [0,199]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6910) = 0
+Anim = 6910
+ID = 6910
+Pos = -(Root,var(38)), (Root,var(39))
+PosType = Right
+SprPriority = 200
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+;--------------------
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(20145) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != Var(40)
+ID = 20145
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(20144) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != Var(40)
+ID = 20144
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(20143) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != Var(40)
+ID = 20143
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(20142) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != Var(40)
+ID = 20142
+
+[State 6900, RemoveExplod];?(??1)
+Type = RemoveExplod
+TriggerAll = NumExplod(20141) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != Var(40)
+ID = 20141
+
+;--------------------
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [800,999]) && (Root,Var(43) = 1000)
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(20145) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20145
+Pos = (Root,var(38)-59), (Root,var(39)-14)
+PosType = Left
+SprPriority = 205
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [600,799]) && (Root,Var(43) >= 800)
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(20144) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20144
+Pos = (Root,var(38)-46), (Root,var(39)-7)
+PosType = Left
+SprPriority = 205
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [400,599]) && (Root,Var(43) >= 600)
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(20143) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20143
+Pos = (Root,var(38)-33), (Root,var(39)-14)
+PosType = Left
+SprPriority = 205
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [200,399]) && (Root,Var(43) >= 400)
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(20142) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20142
+Pos = (Root,var(38)-20), (Root,var(39)-7)
+PosType = Left
+SprPriority = 205
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [0,199]) && (Root,Var(43) >= 200)
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(20141) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20141
+Pos = (Root,var(38)-7), (Root,var(39)-14)
+PosType = Left
+SprPriority = 205
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+;------------------------------------------------
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [800,999]) && (Root,Var(43) = 1000)
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(20145) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20145
+Pos = -(Root,var(38)-59), (Root,var(39)-14)
+PosType = Right
+SprPriority = 205
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [600,799]) && (Root,Var(43) >= 800)
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(20144) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20144
+Pos = -(Root,var(38)-46), (Root,var(39)-7)
+PosType = Right
+SprPriority = 205
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [400,599]) && (Root,Var(43) >= 600)
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(20143) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20143
+Pos = -(Root,var(38)-33), (Root,var(39)-14)
+PosType = Right
+SprPriority = 205
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [200,399]) && (Root,Var(43) >= 400)
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(20142) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20142
+Pos = -(Root,var(38)-20), (Root,var(39)-7)
+PosType = Right
+SprPriority = 205
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = (Root,Var(40) = [0,199]) && (Root,Var(43) >= 200)
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(20145) = 0
+Anim = (Floor((Root,Var(40)%200)/(200/22)))+29140
+ID = 20145
+Pos = -(Root,var(38)-7), (Root,var(39)-14)
+PosType = Right
+SprPriority = 205
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, VarSet];????
+Type = VarSet
+Trigger1 = 1
+var(40) = Parent,Var(40)
+
+;--------------------
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) != 1000
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6890) = 0
+Anim = 6890
+ID = 6890
+Pos = (Root,var(38)-59), (Root,var(39)-14)
+PosType = Left
+SprPriority = 210
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,799]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6891) = 0
+Anim = 6890
+ID = 6891
+Pos = (Root,var(38)-46), (Root,var(39)-7)
+PosType = Left
+SprPriority = 210
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,599]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6892) = 0
+Anim = 6890
+ID = 6892
+Pos = (Root,var(38)-33), (Root,var(39)-14)
+PosType = Left
+SprPriority = 210
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,399]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6893) = 0
+Anim = 6890
+ID = 6893
+Pos = (Root,var(38)-20), (Root,var(39)-7)
+PosType = Left
+SprPriority = 210
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) < 200
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6894) = 0
+Anim = 6890
+ID = 6894
+Pos = (Root,var(38)-7), (Root,var(39)-14)
+PosType = Left
+SprPriority = 210
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) != 1000
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6890) = 0
+Anim = 6890
+ID = 6890
+Pos = -(Root,var(38)-59), (Root,var(39)-14)
+PosType = Right
+SprPriority = 210
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,799]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6891) = 0
+Anim = 6890
+ID = 6891
+Pos = -(Root,var(38)-46), (Root,var(39)-7)
+PosType = Right
+SprPriority = 210
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,599]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6892) = 0
+Anim = 6890
+ID = 6892
+Pos = -(Root,var(38)-33), (Root,var(39)-14)
+PosType = Right
+SprPriority = 210
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,399]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6893) = 0
+Anim = 6890
+ID = 6893
+Pos = -(Root,var(38)-20), (Root,var(39)-7)
+PosType = Right
+SprPriority = 210
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,199]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6894) = 0
+Anim = 6890
+ID = 6894
+Pos = -(Root,var(38)-7), (Root,var(39)-14)
+PosType = Right
+SprPriority = 210
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+
+;--------------------
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6895) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) >= 1000
+Trigger5 = Root,Var(43) < 799
+Trigger6 = Root,Var(43) != Var(43)
+ID = 6895
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6896) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) >= 800
+Trigger5 = Root,Var(43) < 599
+Trigger6 = Root,Var(43) != Var(43)
+ID = 6896
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6897) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) >= 600
+Trigger5 = Root,Var(43) < 399
+Trigger6 = Root,Var(43) != Var(43)
+ID = 6897
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6898) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) >= 400
+Trigger5 = Root,Var(43) < 199
+Trigger6 = Root,Var(43) != Var(43)
+ID = 6898
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6899) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = (Root,Var(43) >= 200)
+Trigger5 = Root,Var(43) != Var(43)
+ID = 6899
+
+;--------------------
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [800,999]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6895) = 0
+Anim = (Floor((Root,Var(43)%200)/(200/21)))+29200
+ID = 6895
+Pos = (Root,var(38)-59), (Root,var(39)-14)
+PosType = Left
+SprPriority = 215
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [600,799]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6896) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6896
+Pos = (Root,var(38)-46), (Root,var(39)-7)
+PosType = Left
+SprPriority = 215
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [400,599]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6897) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6897
+Pos = (Root,var(38)-33), (Root,var(39)-14)
+PosType = Left
+SprPriority = 215
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [200,399]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6898) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6898
+Pos = (Root,var(38)-20), (Root,var(39)-7)
+PosType = Left
+SprPriority = 215
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,199]
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(6899) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6899
+Pos = (Root,var(38)-7), (Root,var(39)-14)
+PosType = Left
+SprPriority = 215
+Facing = 1
+BindTime = -1
+OwnPal = 0
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5, 0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [800,999]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6895) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6895
+Pos = -(Root,var(38)-59), (Root,var(39)-14)
+PosType = Right
+SprPriority = 215
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5,0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [600,799]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6896) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6896
+Pos = -(Root,var(38)-46), (Root,var(39)-7)
+PosType = Right
+SprPriority = 215
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5,0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [400,599]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6897) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6897
+Pos = -(Root,var(38)-33), (Root,var(39)-14)
+PosType = Right
+SprPriority = 215
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5,0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [200,399]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6898) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6898
+Pos = -(Root,var(38)-20), (Root,var(39)-7)
+PosType = Right
+SprPriority = 215
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5,0.5
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = Root,Var(43) = [0,199]
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(6899) = 0
+Anim = ((Floor((Root,Var(43)%200)/(200/21)))+29200)
+ID = 6899
+Pos = -(Root,var(38)-7), (Root,var(39)-14)
+PosType = Right
+SprPriority = 215
+Facing = -1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.5,0.5
+
+[State 6900, VarSet]
+Type = VarSet
+Trigger1 = 1
+var(43) = Parent,Var(43)
+
+;--------------------
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6915) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != 1000
+ID = 6915
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6914) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != [800,999]
+ID = 6914
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6913) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != [600,799]
+ID = 6913
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6912) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != [400,599]
+ID = 6912
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6911) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != [200,399]
+ID = 6911
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6910) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(40) != [0,199]
+ID = 6910
+
+;--------------------
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6890) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) = 1000
+ID = 6890
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6891) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) >= 800
+ID = 6891
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6892) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) >= 600 
+ID = 6892
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6893) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) >= 400
+ID = 6893
+
+[State 6900, RemoveExplod]
+Type = RemoveExplod
+TriggerAll = NumExplod(6894) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = Root,Var(43) >= 200
+ID = 6894
+
+[State 6900, VarSet]
+Type = VarSet
+Trigger1 = NumExplod(6910) > 0
+Trigger2 = NumExplod(6911) > 0
+Trigger3 = NumExplod(6912) > 0
+Trigger4 = NumExplod(6915) > 0
+Trigger5 = NumExplod(6916) > 0
+Trigger6 = NumExplod(6917) > 0
+Trigger7 = NumExplod(6918) > 0
+Trigger8 = NumExplod(6919) > 0
+var(4) = 3
+
+[State 6900, VarAdd];????????? ??????
+Type = VarAdd
+TriggerAll = Var(4) > 0
+Trigger1 = NumExplod(6910) = 0
+Trigger1 = NumExplod(6911) = 0
+Trigger1 = NumExplod(6912) = 0
+Trigger1 = NumExplod(6915) = 0
+Trigger1 = NumExplod(6916) = 0
+Trigger1 = NumExplod(6917) = 0
+Trigger1 = NumExplod(6918) = 0
+Trigger1 = NumExplod(6919) = 0
+var(4) = -1
+;--------------------
+
+[State -2, ParentVarSet]
+Type = ParentVarSet
+Trigger1 = FVar(9)
+var(39) = Root,var(39)+(Ceil(FVar(9)*16))
+IgnoreHitPause = 1
+
+;--------------------
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(20000) = 0
+trigger1 = root,numexplod(30000) = 1
+Anim = 22000
+ID = 20000
+Pos = (Root,var(38))-28, (Root,var(39))-28
+PosType = Left
+SprPriority = 199
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.3, 0.3
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(20001) = 0
+trigger1 = root,numexplod(30000) = 0
+Anim = 22001
+ID = 20001
+Pos = (Root,var(38))-28, (Root,var(39))-28
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.3, 0.3
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(20002) = 0
+Anim = 22002
+ID = 20002
+Pos = (Root,var(38))-65, (Root,var(39))-28
+PosType = Left
+SprPriority = 201
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.65, 0.65
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(20000) = 0
+trigger1 = root,numexplod(30000) = 1
+Anim = 22000
+ID = 20000
+Pos = -(Root,var(38))+28, (Root,var(39))-28
+PosType = Right
+SprPriority = 199
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.3, 0.3
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(20001) = 0
+trigger1 = root,numexplod(30000) = 0
+Anim = 22001
+ID = 20001
+Pos = -(Root,var(38))+28, (Root,var(39))-28
+PosType = Right
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.3, 0.3
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(20002) = 0
+Anim = 22002
+ID = 20002
+Pos = -(Root,var(38))+37, (Root,var(39))-28
+PosType = Right
+SprPriority = 201
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.65, 0.65
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+triggerall = numexplod(20000) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+trigger4 = root,numexplod(30000) != 1
+id = 20000
+ignorehitpause = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+triggerall = numexplod(20001) > 0
+trigger1 = root,stateno = 3000 || root,stateno = 3050
+Trigger2 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger3 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger4 = !Root,Alive
+id = 20001
+ignorehitpause = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+triggerall = numexplod(20002) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+id = 20002
+ignorehitpause = 1
+
+;--------------------
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(22010) = 0
+Trigger1 = root,numexplod(22020) = 0
+Anim = 22010
+ID = 22010
+Pos = (Root,Var(38))-13, (Root,Var(39))-28
+PosType = Left
+SprPriority = 199
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.14, 0.14
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(22011) = 0
+Trigger1 = root,numexplod(22020) = 1
+Anim = 22011
+ID = 22011
+Pos = (Root,Var(38))-13, (Root,Var(39))-28
+PosType = Left
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.14, 0.14
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 1
+Trigger1 = NumExplod(22012) = 0
+Anim = 22012
+ID = 22012
+Pos = (Root,Var(38))-13, (Root,Var(39))-28
+PosType = Left
+SprPriority = 199
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.13, 0.13
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(22010) = 0
+Trigger1 = root,numexplod(22020) = 0
+Anim = 22010
+ID = 22010
+Pos = -(Root,Var(38))+13, (Root,Var(39))-28
+PosType = Right
+SprPriority = 199
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.14, 0.14
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(22011) = 0
+Trigger1 = root,numexplod(22020) = 1
+Anim = 22011
+ID = 22011
+Pos = -(Root,Var(38))+13, (Root,Var(39))-28
+PosType = Right
+SprPriority = 200
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.14, 0.14
+
+[State 6900, Explod]
+Type = Explod
+Trigger1 = (RoundState > 0) && (Root,StateNo != [170,182])
+Trigger1 = !(Root,Life = 0 && Root,StateNo = 5150)
+Trigger1 = Root,Alive
+Trigger1 = TeamSide = 2
+Trigger1 = NumExplod(22012) = 0
+Anim = 22012
+ID = 22012
+Pos = -(Root,Var(38))+13, (Root,Var(39))-28
+PosType = Right
+SprPriority = 199
+Facing = 1
+BindTime = -1
+OwnPal = 1
+OnTop = 0
+RemoveTime = -1
+SuperMove = 1
+PauseMoveTime = 99999999
+SuperMoveTime = 99999999
+Scale = 0.13, 0.13
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+triggerall = numexplod(22010) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+trigger4 = root,stateno = 2000
+id = 22010
+ignorehitpause = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+triggerall = numexplod(22011) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+Trigger4 = root,numexplod(22020) = 0
+id = 22011
+ignorehitpause = 1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+triggerall = numexplod(22012) > 0
+Trigger1 = (RoundState = 4) && (Root,StateNo = [170,182])
+Trigger2 = (Root,Life = 0) && (Root,StateNo = 5150)
+Trigger3 = !Root,Alive
+id = 22012
+ignorehitpause = 1
+
+;------------------------------ 
+;Wall Slam Broom Powersweep
+[Statedef 10040]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+facep2 = 1
+
+;[State 1107, 4]
+;type = ChangeAnim
+;trigger1 = Time = 0
+;trigger1 = SelfAnimExist(5400)
+;value = 5400
+
+[State 1107, 3]
+type = posset
+trigger1 = time = 0
+trigger1 = pos y > -10
+y = -10
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 0
+value = 1
+movecamera = 0,0
+
+[State 1106, 1]
+type = ChangeAnim
+;triggerall = anim != 5400
+trigger1 = Time >= 0
+value = 5030
+
+[State 1106, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1106, 3]
+type = velset
+trigger1 = GetHitVar(hitshaketime) = 0
+x = -15
+
+[State 1106, 4]
+type = changeState
+trigger1 = GetHitVar(hitshaketime) = 0
+value = 10041
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10041]
+type = A
+movetype = H
+physics = N
+
+[State 0, ScreenBound]
+type = ScreenBound
+trigger1 = 0
+value = 1
+movecamera = 0,0
+
+[State 1107, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1107, 3]
+type = velset
+trigger1 = time = 0
+y = -2
+
+[State 1107, 4]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5400)
+value = 5400
+
+[State 1107, 4]
+type = ChangeAnim
+triggerall = anim != 5400
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5035)
+value = 5035
+
+[State 1107, 4]
+type = ChangeAnim
+triggerall = anim != 5400
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5035)
+value = 5035
+
+[State 1107, 5]
+type = VelAdd
+trigger1 = 1
+y = 0.1
+
+[State 1107, 7]
+type = SelfState
+trigger1 = Time >= 1
+trigger1 = Vel Y >= 0.1
+trigger1 = Pos Y > 0
+value = 5100
+ctrl = 0
+
+[State 1107, 8]
+type = changeState
+trigger1 = Time >= 12
+trigger1 = BackEdgeBodyDist <= 5
+trigger2 = Time = 15
+;trigger2 = BackEdgeBodyDist <= 25
+value = 10042
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10042]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+
+[State 1000, 3]
+type = EnvShake
+trigger1 = time = 0
+time = 12
+
+[State 1107, 4]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5401)
+value = 5401
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5401
+trigger1 = time = 0
+value = 5010
+
+[State 1107, 8]
+type = changeState
+trigger1 = Time = 2
+value = 10043
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10043]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+
+;[State 1107, 4]
+;type = ChangeAnim
+;trigger1 = Time = 0
+;trigger1 = SelfAnimExist(5401)
+;value = 5401
+
+;[State 210, 1]
+;type = changeanim
+;triggerall = anim != 5401
+;trigger1 = 1
+;value = 5010
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 210, 1]
+type = changestate
+trigger1 = time = 4
+value = 10044
+
+;------------------------------ 
+[Statedef 10044]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+
+[State 210, 0]
+type = velset
+trigger1 = time = 0
+x = 1.2
+y = -7.8
+
+[State 1107, 4]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5402)
+value = 5402
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5402
+trigger1 = time = 0
+trigger1 = SelfAnimExist(5070)
+value = 5070
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5402
+triggerall = alive
+trigger1 = time = 0
+value = 5070
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1109, 7]
+type = veladd
+trigger1 = Time >= 0
+y = 0.55
+
+[State 1109, 4]
+type = SelfState
+trigger1 = Vel Y >= 0.1
+trigger1 = Pos Y > -0.5
+value = 5100
+ctrl = 0
+
+;------------------------------
+;Hit Custom States
+;------------------------------ 
+[Statedef 10003]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+facep2 = 1
+
+[State 1106, 1]
+type = ChangeAnim
+trigger1 = Time >= 0
+value = 5030
+
+[State 1106, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1106, 3]
+type = velset
+trigger1 = GetHitVar(hitshaketime) = 0
+x = -11
+
+[State 1106, 4]
+type = changeState
+trigger1 = GetHitVar(hitshaketime) = 0
+value = 10007
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10004]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+facep2 = 1
+
+[State 1106, 1]
+type = ChangeAnim
+trigger1 = Time >= 0
+value = 5030
+
+[State 1106, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1106, 3]
+type = velset
+trigger1 = GetHitVar(hitshaketime) = 0
+x = -12
+
+[State 1106, 4]
+type = changeState
+trigger1 = GetHitVar(hitshaketime) = 0
+value = 10007
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10005]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+facep2 = 1
+
+[State 1106, 1]
+type = ChangeAnim
+trigger1 = Time >= 0
+value = 5030
+
+[State 1106, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1106, 3]
+type = velset
+trigger1 = GetHitVar(hitshaketime) = 0
+x = -8
+
+[State 1106, 4]
+type = changeState
+trigger1 = GetHitVar(hitshaketime) = 0
+value = 10007
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10006]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+facep2 = 1
+
+[State 1106, 1]
+type = ChangeAnim
+trigger1 = Time >= 0
+value = 5030
+
+[State 1106, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1106, 3]
+type = velset
+trigger1 = GetHitVar(hitshaketime) = 0
+x = -6
+
+[State 1106, 4]
+type = changeState
+trigger1 = GetHitVar(hitshaketime) = 0
+value = 10007
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10007]
+type = A
+movetype = H
+physics = N
+
+[State 1107, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+;[State 1107, 3]
+;type = velset
+;triggerall = enemy,stateno != 3410
+;trigger1 = time = 0
+;y = GetHitVar(yvel)
+
+[State 1107, 3]
+type = velset
+trigger1 = time = 0
+y = -3
+
+[State 0, Gravity]
+type = Gravity
+trigger1 = time > 1
+;ignorehitpause = 
+;persistent = 
+
+[State 1107, 4]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5400)
+value = 5400
+
+[State 1107, 4]
+type = ChangeAnim
+triggerall = anim != 5400
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5035)
+value = 5035
+
+[State 1107, 5]
+type = VelAdd
+trigger1 = 1
+y = -0.1
+
+[State 5050, 4]
+type = selfState
+triggerall = alive
+triggerall = CanRecover
+trigger1 = 1
+value = 5050
+
+[State 1107, 7]
+type = SelfState
+trigger1 = Time >= 1
+trigger1 = Vel Y >= 0.1
+trigger1 = Pos Y > 0
+value = 5100
+ctrl = 0
+
+[State 1107, 6]
+type = ChangeState
+triggerall = HitFall
+;trigger1 = AnimTime = 0
+trigger1 = Time = 0
+trigger1 = Anim != 5035 && anim != 5400
+value = 10008
+
+[State 1107, 8]
+type = changeState
+trigger1 = Time >= 3
+trigger1 = BackEdgeBodyDist <= 15
+value = ifelse(abs(vel x)=10,10015,10009)
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10008]
+type = A
+movetype = H
+physics = N
+
+[State 1108, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1108, 3]
+type = ChangeAnim
+trigger1 = Anim = 5035
+trigger1 = AnimTime = 0
+trigger2 = Time = 0
+trigger2 = Anim != 5035
+value = 5050
+
+[State 5050, 2] ;Coming down anim
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, 1, -2)
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+[State 1108, 3]
+type = VelAdd
+trigger1 = 1
+y = 0.50
+
+[State 5050, 4]
+type = selfState
+triggerall = alive
+triggerall = CanRecover
+trigger1 = 1
+value = 5050
+
+[State 1107, 8]
+type = changeState
+trigger1 = Time >= 3
+trigger1 = BackEdgeBodyDist <= 15
+value = ifelse(abs(vel x)=10,10015,10009)
+ctrl = 0
+
+[State 1108, 4]
+type = SelfState
+trigger1 = Time >= 1
+trigger1 = Vel Y >= 0.1
+trigger1 = Pos Y > -0.5
+value = 5100
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10009]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+
+[State 1000, 3]
+type = EnvShake
+trigger1 = time = 0
+time = 12
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1107, 4]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5401)
+value = 5401
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5401
+trigger1 = time = 0
+value = 5010
+
+[State 1107, 8]
+type = changeState
+trigger1 = Time = 2
+value = 10018
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10013]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+
+[State 1106, 1]
+type = ChangeAnim
+trigger1 = Time >= 0
+value = 5030
+
+[State 1106, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1106, 3]
+type = velset
+trigger1 = GetHitVar(hitshaketime) = 0
+x = -14
+
+[State 1106, 4]
+type = changeState
+trigger1 = GetHitVar(hitshaketime) = 0
+value = 10007
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10015]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+
+[State 1000, 3]
+type = EnvShake
+trigger1 = time = 0
+time = 12
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1107, 4]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5401)
+value = 5401
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5401
+trigger1 = time = 0
+value = 5010
+
+[State 1107, 8]
+type = changeState
+trigger1 = Time = 2
+value = 10016
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10016]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+
+;[State 210, 1]
+;type = changeanim
+;trigger1 = 1
+;value = 5010
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 210, 1]
+type = changestate
+trigger1 = time = 4
+value = 10017
+
+;------------------------------ 
+[Statedef 10017]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+
+[State 210, 0]
+type = velset
+trigger1 = time = 0
+x = 1.8
+y = -6.8
+
+[State 1107, 4]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5402)
+value = 5402
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5402
+trigger1 = time = 0
+trigger1 = SelfAnimExist(5070)
+value = 5070
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5402
+triggerall = alive
+trigger1 = time = 0
+value = 5070
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1109, 7]
+type = veladd
+trigger1 = Time >= 0
+y = 0.55
+
+[State 1109, 4]
+type = SelfState
+trigger1 = Vel Y >= 0.1
+trigger1 = Pos Y > -0.5
+value = 5100
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10018]
+type = A
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+
+[State 210, 1]
+type = changeanim
+trigger1 = 1
+value = 5010
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 210, 1]
+type = changestate
+trigger1 = time = 4
+value = 10019
+
+;------------------------------ 
+[Statedef 10019]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+
+[State 210, 0]
+type = velset
+trigger1 = time = 0
+x = 1.8
+y = -6.8
+
+[State 1107, 4]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5402)
+value = 5402
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5402
+trigger1 = time = 0
+trigger1 = SelfAnimExist(5070)
+value = 5070
+
+[State 210, 1]
+type = changeanim
+triggerall = anim != 5402
+triggerall = alive
+trigger1 = time = 0
+value = 5070
+
+[State 1109, 2]
+type = HitFallSet
+trigger1 = time >= 0
+value = 1
+
+[State 1109, 7]
+type = veladd
+trigger1 = Time >= 0
+y = 0.55
+
+[State 1109, 4]
+type = SelfState
+trigger1 = Vel Y >= 0.1
+trigger1 = Pos Y > -0.5
+value = 5100
+ctrl = 0
+
+;------------------------------ 
+[Statedef 10050]
+Type     = A
+MoveType = H
+Physics  = N
+Ctrl     = 0
+SprPriority = -1
+facep2 = 1
+
+[State 10005]
+Type = VarSet
+Trigger1 = (Time = 0)
+sysvar(1) = Floor(Pos Y)
+
+[State 10005]
+Type = VelSet
+Trigger1 = !HitShakeOver
+X = 0
+Y = 0
+
+[State 10005]
+Type = VelSet
+Trigger1 = HitShakeOver
+X = GetHitVar(XVel)*Facing
+Y = GetHitVar(YVel)
+Persistent = 0
+
+[State 10005]
+Type = VelAdd
+Trigger1 = HitShakeOver
+Y = GetHitVar(YAccel)
+
+[State 10005]
+Type = ChangeAnim
+Trigger1 = !HitShakeOver
+Trigger1 = Time > 0
+Value = Anim
+Elem = AnimElemNo(0)
+
+[State 10005]
+Type = ChangeAnim
+Trigger1 = Time = 0
+Trigger1 = SelfAnimExist(5035)
+Value = 5035
+
+[State 10005, ƒAƒjƒ]
+Type = ChangeAnim
+Trigger1 = Time = 0
+Trigger1 = !SelfAnimExist(5035)
+Value = 5030
+
+[State 10005]
+Type = ChangeAnim
+Trigger1 = AnimTime = 0
+Trigger1 = Anim = [5030,5035]
+Value = 5050
+
+[State 10005]
+Type = ChangeState
+Trigger1 = HitShakeOver
+Trigger1 = Pos Y > 25
+Value = 10051
+
+;------------------------------ 
+[Statedef 10051]
+Type     = A
+MoveType = H
+Physics  = N
+Ctrl     = 0
+SprPriority = -1
+
+[State 10006]
+Type = ChangeAnim
+Trigger1 = Time < 4
+Value = 5100
+
+[State 10006]
+Type = ChangeAnim2
+Trigger1 = Time > 3
+Value = 10000
+
+[State 10006]
+Type = PosSet
+Trigger1 = Time = 0
+Y = -1
+
+[State 10006]
+Type = PosFreeze
+Trigger1 = Time < 4
+
+[State 10006]
+Type = AngleDraw
+Trigger1 = (Time > 3) && (Pos Y < 0)
+Value = Time*15
+
+[State 10006]
+Type = VelSet
+Trigger1 = Time = 0
+X = -0.5
+Y = -2+(sysvar(1)/200.)
+
+[State 10006]
+Type = VelAdd
+Trigger1 = Time > 4
+Y = GetHitVar(YAccel)*.3
+
+[State 10006]
+Type = EnvShake
+Trigger1 = Time = 0
+Time  = 15
+Ampl  = 5
+Freq  = 100
+Phase = 100
+
+[State 10006]
+Type = OffSet
+Trigger1 = (Time > 3) && (Pos Y < 0)
+Y = Const(Size.Mid.Pos.Y)
+
+[State 10006, ]
+Type = SelfState
+Trigger1 = Pos Y >= 0 && Vel Y > 0
+Value = 5100
+
+;------------------------------ 
+[Statedef 10052]
+Type     = A
+MoveType = H
+Physics  = N
+Ctrl     = 0
+SprPriority = -1
+facep2 = 1
+
+[State 10005]
+Type = VarSet
+Trigger1 = (Time = 0)
+sysvar(1) = Floor(Pos Y)
+
+[State 10005]
+Type = VelSet
+Trigger1 = !HitShakeOver
+X = 0
+Y = 0
+
+[State 10005]
+Type = VelSet
+Trigger1 = HitShakeOver
+X = GetHitVar(XVel)*Facing
+Y = GetHitVar(YVel)
+Persistent = 0
+
+[State 10005]
+Type = VelAdd
+Trigger1 = HitShakeOver
+Y = GetHitVar(YAccel)
+
+[State 10005]
+Type = ChangeAnim
+Trigger1 = !HitShakeOver
+Trigger1 = Time > 0
+Value = Anim
+Elem = AnimElemNo(0)
+
+[State 10005]
+Type = ChangeAnim
+Trigger1 = Time = 0
+Trigger1 = SelfAnimExist(5035)
+Value = 5035
+
+[State 10005, ƒAƒjƒ]
+Type = ChangeAnim
+Trigger1 = Time = 0
+Trigger1 = !SelfAnimExist(5035)
+Value = 5030
+
+[State 10005]
+Type = ChangeAnim
+Trigger1 = AnimTime = 0
+Trigger1 = Anim = [5030,5035]
+Value = 5050
+
+[State 10005]
+Type = ChangeState
+Trigger1 = HitShakeOver
+Trigger1 = Pos Y > 25
+Value = 10053
+
+;------------------------------ 
+[Statedef 10053]
+Type     = A
+MoveType = H
+Physics  = N
+Ctrl     = 0
+SprPriority = -1
+
+[State 10006]
+Type = ChangeAnim
+Trigger1 = Time < 4
+Value = 5100
+
+[State 10006]
+Type = ChangeAnim2
+Trigger1 = Time > 3
+Value = 10000
+
+[State 10006]
+Type = PosSet
+Trigger1 = Time = 0
+Y = -1
+
+[State 10006]
+Type = PosFreeze
+Trigger1 = Time < 4
+
+[State 10006]
+Type = AngleDraw
+Trigger1 = (Time > 3) && (Pos Y < 0)
+Value = Time*30
+
+[State 10006]
+Type = VelSet
+Trigger1 = Time = 0
+X = -4
+Y = -2+(sysvar(1)/200.)
+
+[State 10006]
+Type = VelAdd
+Trigger1 = Time > 4
+Y = GetHitVar(YAccel)*.3
+
+[State 10006]
+Type = EnvShake
+Trigger1 = Time = 0
+Time  = 15
+Ampl  = 5
+Freq  = 100
+Phase = 100
+
+[State 10006]
+Type = OffSet
+Trigger1 = (Time > 3) && (Pos Y < 0)
+Y = Const(Size.Mid.Pos.Y)
+
+[State 0, Width]
+type = Width
+trigger1 = 1
+edge = 20,20
+player = 0,0
+;value = 0,0
+;ignorehitpause = 
+;persistent = 
+
+[State 10006, ]
+Type = SelfState
+Trigger1 = Pos Y >= 0 && Vel Y > 0
+Value = 5100
+
+;---------------------------------------------------------------------------
+;Enemy Wall Slam Effect
+[Statedef 100050]
+type    = U
+movetype= I
+physics = N
+ctrl = 0
+anim = 7004
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = 90
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add 
+
+[State 0]
+type = destroyself
+trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Enemy Ground Slam Effect
+[Statedef 100060]
+type    = U
+movetype= I
+physics = N
+ctrl = 0
+anim = 7004
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add 
+
+[State 0]
+type = destroyself
+trigger1 = animtime = 0

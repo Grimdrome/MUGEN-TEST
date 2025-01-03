@@ -1,0 +1,1593 @@
+;---------------------------------------------------------------------------
+;Dust Roll Effects
+[Statedef 720]
+type = A
+movetype = A
+physics = N
+ctrl=0
+anim=712
+sprpriority=2
+velset=0,0
+
+[State 0, BindToParent]
+type = BindToParent
+triggerall = parent,stateno != 31202
+trigger1 = 1
+pos = -2, -45
+
+[State ]
+type = Assertspecial
+Trigger1=1
+flag=Noshadow
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+trigger2 = var(41) = 2
+v = 41  
+value = 0
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = time
+v = 41    
+value = 1
+
+[State 600]
+Type = Helper
+Trigger1 = var(41) = 2
+trigger2 = time = 0
+StateNo = 721
+ID = 721
+Name = "Dust Trail"
+Pos = 0, 0
+PosType = P1
+Ownpal = 1
+IgnoreHitPause = 1
+Persistent = 1
+Size.XScale = 0.70
+Size.YScale = 0.70
+
+[State RemoveHelper]
+type = destroyself
+trigger1 = time = 24
+
+;--------------------------------------------------------------------------
+;Dust Trail
+[Statedef 721]
+Physics = N
+Anim    = 711
+velset = ifelse(random < 500,-2,-1.5),ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,-0.5,-0.8),ifelse(random < 500,0.5,0.8)))
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = floor(256-(time*12.5)),256
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = !time
+value = floor(random%360)
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = animtime = 0
+
+;--------------------------------------------------------------------------
+;Dust Transparency
+[Statedef 722]
+Physics = N
+Anim    = 9999
+velset =  0,0
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 60
+
+;--------------------------------------------------------------------------
+;Dust Spread
+[Statedef 723]
+Physics = N
+Anim    = 711
+sprpriority = -1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = cos(random%360)*2
+y = sin(random%360)*2
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = animtime = 0
+
+;--------------------------------------------------------------------------
+;Dust Ring
+[Statedef 724]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 713
+scale = 0.38, 0.38
+postype = p1
+pos = 0, 0
+sprpriority = 7
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 713
+facing = 1
+persistent = 0
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 713
+scale = 0.38+(time*0.08),0.38+(time*0.08)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 25
+
+;--------------------------------------------------------------------------
+;Ring Hitspark
+[Statedef 6100]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 77000]
+type = explod
+triggerall = parent,stateno != 1901
+trigger1 = time = 0
+anim = 6100
+scale = 0.38, 0.38
+postype = p2
+pos = 4, -65
+sprpriority = 7
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 6100
+facing = 1
+persistent = 0
+
+[State 77000]
+type = explod
+triggerall = parent,stateno = 1901
+trigger1 = time = 0
+anim = 6100
+scale = 0.38, 0.38
+postype = p2
+pos = 4, 0
+sprpriority = 7
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 6100
+facing = 1
+persistent = 0
+
+;[State 77000]
+;type = explod
+;trigger1 = parent,stateno = 250
+;trigger1 = time = 0
+;trigger2 = parent,stateno = 410
+;trigger2 = time = 0
+;trigger3 = root,stateno = 1600
+;trigger3 = time = 0
+;anim = 6100
+;scale = 0.38, 0.38
+;postype = p2
+;pos = -2, -15
+;sprpriority = 7
+;ownpal = 1
+;removeongethit = 0
+;ignorehitpause = 1
+;id = 6100
+;facing = 1
+;persistent = 0
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 6100
+scale = 0.38+(time*0.12),0.38+(time*0.12)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = animtime = 0
+
+;--------------------------------------------------------------------------
+;Ring 2 Hitspark
+[Statedef 6101]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 6100
+scale = 0.19, 0.38
+postype = p2
+pos = -2, -45
+sprpriority = 7
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 6101
+facing = 1
+persistent = 0
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 6101
+scale = 0.19+(time*0.04),0.38+(time*0.08)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = animtime = 0
+
+;---------------------------------------------------------------------------
+;Hitspark Ring 3
+[Statedef 6102]
+type    = A
+movetype= I
+physics = N
+ctrl = 0
+anim = 6101
+sprpriority = 9
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = time = 0
+time = 100
+mul = 120,60,0
+sinadd = 0,0,0,255
+color = 256
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+;[State 0]
+;type = varset
+;trigger1 = time = 0
+;var(0) = random%360
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+;value = var(0)
+scale = 1 + time * 0.75,1 + time * 0.75
+
+[State 0]
+type = destroyself
+trigger1 = time = 10
+
+;--------------------------------------------------------------------------
+;Fast Huge Ring Hitspark
+[Statedef 6103]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 6100
+scale = 0.38, 0.38
+postype = p2
+pos = -2, -45
+sprpriority = 7
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 6100
+facing = 1
+persistent = 0
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 6100
+scale = 0.38+(time*0.16),0.38+(time*0.16)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = animtime = 0
+
+;--------------------------------------------------------------------------
+;Solar Ring
+[Statedef 7000]
+Physics = N
+Anim    = 1404
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+time = 999
+pos = 0,0
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, Trans]
+type = Trans
+trigger1 = time = [0,10]
+trans = addalpha
+alpha = 0+time*25,256
+
+[State 0, Trans]
+type = Trans
+trigger1 = time = [11,50]
+trans = addalpha
+alpha = 256,256
+
+[State 0, Trans]
+type = Trans
+trigger1 = time = [51,60]
+trans = addalpha
+alpha = 256-var(47)*25,256
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+var(47) = 0
+
+[State 0, VarSet]
+type = VarAdd
+trigger1 = time > 50
+var(47) = 1
+
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time = [0,30]
+scale = 1 + (time *0.02),1 
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time = [31,60]
+scale = 2.4 - (time *0.02),1 
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 60
+
+;--------------------------------------------------------------------------
+;Rainbow Ring Backwards
+[Statedef 7001]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = time = 0
+time = 999
+ignorehitpause = 1
+;persistent = 
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7000
+scale = 0.68, 0.12
+bindtime = 999
+postype = p1
+pos = 0, 0
+sprpriority = -1
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7000
+facing = -1
+persistent = 0
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,999]
+ID = 7000
+scale = 0.68+(time*0.08),0.12
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = parent,animtime = 0
+
+;--------------------------------------------------------------------------
+;Running
+[Statedef 7100]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6315, Trans]
+Type = Trans
+Trigger1 = Time >= 0
+Trans = Add
+IgnoreHitPause = 1
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7202
+scale = 0.30, 0.48
+postype = p1
+pos = 32, 0
+sprpriority = 4
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7202
+facing = 1
+persistent = 0
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7203
+scale = 0.30, 0.48
+postype = p1
+pos = 32, 0
+sprpriority = 4
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7203
+facing = 1
+persistent = 0
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7100
+scale = 0.48, 0.48
+postype = p1
+pos = -8, 0
+sprpriority = 4
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7100
+facing = 1
+persistent = 0
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7210
+scale = 0.64, 0.64
+postype = p1
+pos = 17, 0
+sprpriority = -1
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7210
+facing = 1
+persistent = 0
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 7202
+scale = 0.30+(time*0.05),0.48+(time*0.017)
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 7203
+scale = 0.30+(time*0.04),0.48+(time*0.017)
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 7210
+scale = 0.64,0.64-(time*0.04)
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = root,prevstateno != 3000
+trigger1 = time = 0
+value = S400,0
+channel = 0
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 10
+
+;--------------------------------------------------------------------------
+;Running Backwards
+[Statedef 7101]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6315, Trans]
+Type = Trans
+Trigger1 = Time >= 0
+Trans = Add
+IgnoreHitPause = 1
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7202
+scale = 0.30, 0.48
+postype = p1
+pos = 32, 0
+sprpriority = 4
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7202
+facing = -1
+persistent = 0
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7203
+scale = 0.30, 0.48
+postype = p1
+pos = 32, 0
+sprpriority = 4
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7203
+facing = -1
+persistent = 0
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7100
+scale = 0.48, 0.48
+postype = p1
+pos = 57, 0
+sprpriority = 4
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7100
+facing = -1
+persistent = 0
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7210
+scale = 0.64, 0.64
+postype = p1
+pos = 42, 0
+sprpriority = -1
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7210
+facing = -1
+persistent = 0
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 7202
+scale = 0.30+(time*0.05),0.48+(time*0.017)
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 7203
+scale = 0.30+(time*0.04),0.48+(time*0.017)
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 7210
+scale = 0.64,0.64-(time*0.04)
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S400,0
+channel = 0
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 10
+
+;--------------------------------------------------------------------------
+;Super Jump
+[Statedef 7102]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6315, Trans]
+Type = Trans
+Trigger1 = Time >= 0
+Trans = Add
+IgnoreHitPause = 1
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7220
+scale = 0.98, 0.86
+postype = p1
+pos = 0, 0
+sprpriority = 4
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7220
+facing = -1
+persistent = 0
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 7221
+scale = 0.28, 0.16
+postype = p1
+pos = 0, 0
+sprpriority = 1
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 7221
+facing = -1
+persistent = 0
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,10]
+ID = 7221
+scale = 0.28+(time*0.08),0.16+(time*0.005)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 10
+
+
+;--------------------------------------------------------------------------
+;Stardust
+[Statedef 8000]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 77000]
+type = explod
+trigger1 = 1
+anim = 8000
+scale = 0.2, 0.2
+postype = p1
+random = 25,105
+sprpriority = -1
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 8000
+facing = 1
+persistent = 1
+vel = ifelse(random < 500,-2,-1.5),ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,-0.5,-0.8),ifelse(random < 500,0.5,0.8)))
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,5]
+ID = 8000
+scale = 0.2+(time*0.02),0.2+(time*0.02)
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [6,25]
+ID = 8000
+scale = 0.2-(time*0.01),0.2-(time*0.01)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 25
+
+;--------------------------------------------------------------------------
+;Stardust Backwards
+[Statedef 8001]
+Physics = N
+Anim    = 9999
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 77000]
+type = explod
+trigger1 = 1
+anim = 8001
+scale = 0.25, 0.25
+postype = p1
+random = 25,105
+sprpriority = -1
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 8000
+facing = -1
+persistent = 4
+vel = ifelse(random < 500,4,3),ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,0.5,0.8),ifelse(random < 500,-0.5,-0.8)))
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [1,5]
+ID = 8000
+scale = 0.25+(time*0.02),0.25+(time*0.02)
+
+[State -1]
+type = ModifyExplod
+trigger1 = time = [6,25]
+ID = 8000
+scale = 0.25-(time*0.01),0.25-(time*0.01)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 25
+
+;---------------------------------------------------------------------------
+[Statedef 8002]
+type    = S                      
+movetype= A                     
+physics = N                                          
+ctrl = 0                         
+anim = 8001                
+poweradd = 0                   
+sprpriority = 5
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+var(30) = random%360
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+value = var(30) + time
+scale = 0.75+(var(30)/1000),0.75+(var(30)/1000)
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = 256-time*16,256
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = floor(sin(random%360)*2.5)
+y = floor(cos(random%360)*2.5)
+
+[State 0, Gravity]
+type = Gravity
+trigger1 = time > 8
+;ignorehitpause = 
+;persistent = 
+
+[State 1001]
+Type=Assertspecial
+Trigger1=1
+flag=noshadow
+
+[State 1001]
+Type=Destroyself
+Trigger1= time = 12
+
+;--------------------------------------------------------------------------
+;Stardust Trail
+[Statedef 8010]
+Physics = N
+Anim    = 8000
+velset =  ifelse(random < 500,-4,-3),ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,-0.5,-0.8),ifelse(random < 500,0.5,0.8)))
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = 256-(time*11),256
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 21
+
+;--------------------------------------------------------------------------
+;Stardust Jumping Trail
+[Statedef 8011]
+Physics = N
+Anim    = 8000
+velset =  ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,-0.5,-0.8),ifelse(random < 500,0.5,0.8))),ifelse(random < 500,2,1.5)
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = 256-(time*11),256
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 21
+
+;--------------------------------------------------------------------------
+;Stardust Whirl Trail
+[Statedef 8012]
+Physics = N
+Anim    = 8000
+velset =  ifelse(random < 500,-2,-1.5),ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,-0.5,-0.8),ifelse(random < 500,0.5,0.8)))
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time = [1,10]
+scale = 0.62+(time*0.16), 0.62+(time*0.16)
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time = [11,25]
+scale = 1.8187654321-(time*0.06), 1.8187654321-(time*0.06)
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 25
+
+;--------------------------------------------------------------------------
+;Stardust Trail Fast
+[Statedef 8013]
+Physics = N
+Anim    = 8000
+velset =  -4,0
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = 256-(time*11),256
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 21
+
+;--------------------------------------------------------------------------
+;Stardust Spread
+[Statedef 8020]
+Physics = N
+Anim    = 8000
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = cos(random%360)*4
+y = sin(random%360)*4
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 25
+
+;--------------------------------------------------------------------------
+;Stardust Burst Spread
+[Statedef 8021]
+Physics = N
+Anim    = 8000
+sprpriority = 2
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = cos(random%360)*2
+y = sin(random%360)*2
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 20
+
+;--------------------------------------------------------------------------
+;Stardust Backwards Spread
+[Statedef 8022]
+Physics = N
+Anim    = 8000
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = 256-(time*11),256
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = ifelse(random < 500,-2.5,-2.8)
+y = ifelse(random < 500,-1,ifelse(random < 500,0,ifelse(random < 500,0.5,ifelse(random < 500,1,-0.5))))
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 25
+
+;--------------------------------------------------------------------------
+;Stardust Punched Into Space Trail
+[Statedef 8029]
+Physics = N
+Anim    = 8000
+velset =  ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,-0.5,-0.8),ifelse(random < 500,0.5,0.8))),ifelse(random < 500,2,1.5)
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 150
+
+;--------------------------------------------------------------------------
+;Rainbow Stardust Upperspread
+[Statedef 8030]
+Physics = N
+Anim    = 194
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = !time
+x = floor(sin(random%360)*4)
+y = floor(cos(random%360)*4)
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 60
+
+;--------------------------------------------------------------------------
+;Ring Charger
+[Statedef 8100]
+Physics = N
+Anim    = 9999
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+trigger2 = var(44) = 20
+anim = 8100
+scale = 0.3, 0.3
+postype = p1
+pos = 0, 0
+sprpriority = -2
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 8100
+facing = 1
+removetime = 16
+persistent = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+trigger2 = var(44) = 20
+v = 44    
+value = 0
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = time
+v = 44
+value = 1
+
+[State -1]
+type = ModifyExplod
+trigger1 = time
+ID = 8100
+scale = 0.3+(var(44)*0.05),0.3+(var(44)*0.05)
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+Triggerall = parent,stateno != 4001
+triggerall = parent,stateno != 181
+triggerall = parent,stateno != 1600
+triggerall = parent,stateno != 3300
+Trigger1 = parent,stateno != 77002
+Trigger2 = parent,stateno = 77003
+id = 8100
+ignorehitpause = 1
+
+[State 6000,~??~]
+Type     = DestroySelf
+Triggerall = parent,stateno != 4001
+triggerall = parent,stateno != 181
+triggerall = parent,stateno != 1600
+triggerall = parent,stateno != 3300
+Trigger1 = parent,stateno != 77002
+Trigger2 = parent,stateno = 77003
+
+;--------------------------------------------------------------------------
+;Ring Charger 2
+[Statedef 8101]
+Physics = N
+Anim    = 9999
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 77000]
+type = explod
+trigger1 = time = 0
+anim = 8101
+scale = 0.18, 0.18
+postype = p1
+pos = 0, 0
+sprpriority = -2
+ownpal = 1
+removeongethit = 0
+ignorehitpause = 1
+id = 8101
+facing = 1
+removetime = 12
+persistent = 1
+
+[State -1]
+type = ModifyExplod
+trigger1 = time
+ID = 8101
+scale = 0.18+(time*0.06),0.18+(time*0.06)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = animtime = 0
+
+;--------------------------------------------------------------------------
+;Flash Step Charger
+[Statedef 8102]
+Physics = N
+Anim    = 713
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = time = 0
+time = 999
+pos = 0, -58
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+trigger2 = var(44) = 22
+v = 44    
+value = 0
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = time
+v = 44
+value = 1
+
+[State -1]
+type = AngleDraw
+trigger1 = time
+scale = 1+(var(44)*0.04),1+(var(44)*0.04)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = var(44) = 22
+
+;--------------------------------------------------------------------------
+;Stardust Beam Trail
+[Statedef 8200]
+Physics = N
+Anim    = 8000
+velset =  ifelse(random < 500,-2,-1.5),ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,2,1.5),ifelse(random < 500,2,1.5)))
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time = [1,10]
+scale = 0.62+(time*0.16), 0.62+(time*0.16)
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time = [11,25]
+scale = 1.8187654321-(time*0.06), 1.8187654321-(time*0.06)
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 45
+
+;--------------------------------------------------------------------------
+;Cutting Hitspark
+[Statedef 8600]
+Physics = N
+Anim    = 6004
+sprpriority = 3
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = add
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = !time
+var(49) = random%360
+
+[State 0, AngleSet]
+type = AngleDraw
+trigger1 = 1
+value = var(49)
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = animtime = 0
+
+;--------------------------------------------------------------------------
+;Guard Ring
+[Statedef 9000]
+Physics = N
+Anim    = 119
+sprpriority = 1
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+time = 999
+pos = 40,-55
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = parent,stateno != 130 && parent,stateno != [150,151]
+
+;--------------------------------------------------------------------------
+;Stardust Trail
+[Statedef 9100]
+Physics = N
+Anim    = 194
+velset =  ifelse(random < 500,-2,-1.5),ifelse(random < 500,0,ifelse(random < 500,ifelse(random < 500,-0.5,-0.8),ifelse(random < 500,0.5,0.8)))
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = 256-(time*11),256
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = time > 0
+value = 1 + time * 10
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 24
+
+;--------------------------------------------------------------------------
+;Sun Spike Trail
+[Statedef 9101]
+Physics = N
+Anim    = 9999
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = 1
+x = -1
+y = 0
+
+[State 0, Explod]
+type = Explod
+trigger1 = var(44) = 6
+anim = 8000
+ID = 9102
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = cos(random%360)*2,sin(random%360)*2
+ownpal = 1
+removetime = 12
+pausemovetime = 0
+scale = 0.1,0.1
+sprpriority = 2
+ignorehitpause = 1
+trans = addalpha 
+alpha = 256-time*20,256
+persistent = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = var(44) = 6
+anim = 8000
+ID = 9102
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+facing = 1
+vfacing = 1
+bindtime = 1
+vel = cos(random%360)*2,sin(random%360)*2
+ownpal = 1
+removetime = 12
+pausemovetime = 0
+scale = 0.1,0.1
+sprpriority = 2
+ignorehitpause = 1
+trans = addalpha 
+alpha = 256-time*20,256
+persistent = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+trigger2 = var(44) = 6
+v = 44    
+value = 0
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = time
+v = 44
+value = 1
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = time = 18
+
+;--------------------------------------------------------------------------
+;Sun Spike Trail Exploder
+[Statedef 9102]
+Physics = N
+Anim    = 1104
+velset = 0,0
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+time = 999
+facing = 0
+pos = 0,0
+ignorehitpause = 1
+
+;[State 0, AngleDraw]
+;type = AngleDraw
+;trigger1 = var(45) = [0,7]
+;scale = 0.2*(var(45)*0.1),0.2*(var(45)*0.1)
+
+;[State 0, AngleDraw]
+;type = AngleDraw
+;trigger1 = var(45) = [8,15]
+;scale = 0.2*(var(45)*0.1),0.2*(var(45)*0.1)
+
+;[State 0, VarSet]
+;type = VarSet
+;trigger1 = time = 0
+;trigger2 = var(45) = 15
+;v = 45   
+;value = 0
+
+;[State 0, VarAdd]
+;type = VarAdd
+;trigger1 = time
+;v = 45
+;value = 1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = 256,256
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+Trigger1 = 999
+
+;--------------------------------------------------------------------------
+;Stardust Trail
+[Statedef 9103]
+Physics = N
+Anim    = 8000
+velset =  0,0
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+time = 999
+facing = 0
+pos = 0,0
+ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = var(45) = [0,7]
+scale = 0.5+(var(45)*0.35),0.5+(var(45)*0.35)
+
+;[State 0, AngleDraw]
+;type = AngleDraw
+;trigger1 = var(45) = [8,15]
+;scale = 0.48-((var(45)-7)*0.01),0.48-((var(45)-7)*0.01)
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+trigger2 = var(45) = 10
+v = 45   
+value = 0
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = time
+v = 45
+value = 1
+
+[State 0, Trans]
+type = Trans
+trigger1 = 1
+trans = addalpha
+alpha = 256,256
+
+[state a]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 6000,~??~]
+Type     = DestroySelf
+trigger1 = time = 60
+trigger2 = parent,movecontact
+trigger3 = parent,movereversed
+trigger4 = ishelper(9104)
+trigger4 = numhelper(1101) = 0
