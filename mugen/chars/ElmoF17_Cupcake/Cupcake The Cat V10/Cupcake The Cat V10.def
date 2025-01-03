@@ -1,0 +1,22 @@
+;Definition File For Cupcake The Cat
+;Contains All The Filenames Needed For The Character
+
+;Player Information
+[Info]
+Name = "Cupcake The Cat"
+DisplayName = "Cupcake"
+VersionDate = 07/10/2022
+MugenVersion = 04,14,2002
+Author = "ElmoFan17"
+Pal.Defaults = 1
+
+;Files For The Player
+[Files]
+Cmd = Cupcake.cmd
+Cns = Cupcake.cns
+St = Cupcake.cns
+StCommon = Common1.cns
+Sprite = Cupcake.sff
+Anim = Cupcake.air
+Sound = Cupcake.snd
+Pal1 = Cupcake.act
