@@ -1,0 +1,1996 @@
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　イントロ（専４：専特殊０：特殊０：通常３）
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+; 191                       : 新八専用イントロ
+; 192                       : メルブラ吸血鬼専用イントロ
+; 7000                      : 行きますよ、セブン
+; 7001                      : 真面目な先輩
+; 7002-7003                 : 怖い先輩
+; 7004                      : 雷霆降臨
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　勝利ポーズ（専用４：特殊０：試合１：ライフ３：通常２）
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+; 181                       : 遠野家専用勝利ポーズ
+; 182                       : アーパー専用勝利ポーズ
+; 183                       : メルブラ吸血鬼専用勝利ポーズ
+; 184                       : さっちん鬼専用勝利ポーズ
+; 185                       : ネロアさん専用勝利ポーズ
+; 7100                      : 完全勝利ポーズ
+; 7101                      : 快勝ポーズ
+; 7102                      : 辛勝ポーズ
+; 7110                      : 通常勝利ポーズ(一息)
+; 7111                      : 通常勝利ポーズ(眼鏡をかける)
+; 7120                      : 試合勝利ポーズ(セブン離脱)
+; 7121-7123                 : 試合勝利ポーズ(怖い冗談を言う先輩)
+; 7124                      : 試合勝利ポーズ(クールビューティーな先輩)
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　技一覧Statedef管理
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+; var(1)  = AI専用
+; var(2)  = AI専用
+; var(3)  = AI専用ハンディキャップ(M-Seal)
+; var(4)  = AI専用ハンディキャップ(EX-First)
+; var(5)  = ハンディキャップ(USB)
+; var(6)  = ハンディキャップ(SB)
+; var(7)  = ハンディキャップ(ゲージ)
+; var(8)  = ハンディキャップ(サーキットブレイク)
+; var(9)  = ハンディキャップ(スタイル)
+; var(10) = ハンディキャップ(シールド)
+; var(11) = ハンディキャップ(ウエポン)
+; var(12) = ハンディキャップ(ATK)
+; var(13) = ハンディキャップ(DEF)
+; var(14) = ハンディキャップ(UNLIMITED ARC)
+; var(15) = ハンディキャップ(ATK-C)
+; var(16) = ハンディキャップ(無敵)
+; var(17) = ハンディキャップ(GUARD)
+; var(18) = ハンディキャップ(SKILL)
+; var(19) = 通常攻撃使用判定(立屈空・強版)
+; var(20) = 一時判定用
+; var(21) = 通常攻撃使用判定(立屈空・中版)
+; var(22) = 段階ジャンプ用(0時使用可)
+; var(23) = 空中ダッシュ用(0時使用可)
+; var(24) = 使用人の嗜み
+; var(25) = HIT数判定
+; var(26) = 通常攻撃使用判定(中段)
+; var(27) = AI-LEARNING(airjuggle)
+; var(28) = AI-LEARNING(ゲージ)
+; var(29) = AI-LEARNING(弱永久防止)
+; var(30) = 
+; var(31) = AI-LEARNING(ガード緊急脱出)
+; var(32) = MAGIC CIRCUIT(制限時間)
+; var(33) = MAGIC CIRCUIT(魔力解放)
+; var(34) = MAGIC CIRCUIT(制限時間減少判定)
+; var(35) = MAGIC CIRCUIT(SB判定サーキットスパーク)
+; var(36) = MAGIC CIRCUIT(強制HEAT判定)
+; var(37) = 一時判定用
+; var(38) = MAGIC CIRCUIT(ES-SB判定)
+; var(39) = MAGIC CIRCUIT(ES-SB判定)
+; var(40) = MAGIC CIRCUIT(開始判定)
+; var(41) = ガードブレイク
+; var(42) = AI-LEARNING(遠距離)
+; var(43) = 
+; var(44) = AI-LEARNING(召喚戦術)
+; var(45) = AI-LEARNING(投げ)
+; var(46) = MAGIC CIRCUIT(SB)
+; var(47) = AI-LEARNING(エリアル値)
+; var(48) = AI-LEARNING(エリアル投)
+; var(49) = AI-LEARNING(エリアルXY統合値)
+; var(50) = AI-LEARNING(エリアルXY補完値)
+; var(51) = 
+; var(52) = 
+; var(53) = AI-LEARNING(中段)
+; var(54) = AI-LEARNING(移動)
+; var(55) = MAGIC CIRCUIT(ES-ArcDrive-PowerGauge)
+; var(56) = MAGIC CIRCUIT(ES-ArcDrive-MS)
+; var(57) = イントロ・勝利ポーズ・他一時判定用
+; var(58) = イントロ・勝利ポーズ・他一時判定用
+; var(59) = イントロ・勝利ポーズ・他一時判定用
+
+; fvar(1) = 
+; fvar(2) = 必殺攻撃使用判定
+; fvar(3) = 必殺攻撃使用判定
+; fvar(4) = 必殺攻撃使用判定
+; fvar(5) = 空中攻撃使用判定
+; fvar(6) = 必殺攻撃使用判定
+; fvar(7) = 必殺攻撃使用判定
+; fvar(8) = 
+; fvar(9) = AI-LEARNING(APPROACH)
+; fvar(10) = AI-LEARNING(Escape)
+; fvar(11) = AI-LEARNING(防御学習用一次判定)
+; fvar(12) = AI-LEARNING(防御学習用近接)
+; fvar(13) = AI-LEARNING(防御学習用中距離以上)
+; fvar(14) = イカサマらしき動作をしたら勝手に作動する
+; fvar(15) = 
+; fvar(16) = 
+; fvar(17) = GAUGE-Shackle
+; fvar(18) = UNLIMITED-Shackle
+; fvar(19) = UNLIMITED-Shackle
+; fvar(20) = UNLIMITED-Shackle
+; fvar(21) = 第1補正(Hit Second)
+; fvar(22) = 第2補正(Easy)
+; fvar(23) = 第3補正(Hit First)
+; fvar(24) = 第4補正(Normal)
+; fvar(25) = CIRCUIT BREAK-Shackle
+; fvar(26) = ヴァイタルソース用
+; fvar(27) = 第5補正(Fire)
+; fvar(28) = 第6補正(BOSS-fvar(27))
+; fvar(29) = 第7補正(Shield Shackle[fvar(17)&&fvar(27)])
+; fvar(30) = リ・スキル判断用
+; fvar(31) = リ・スキル
+; fvar(32) = リ・スキル
+; fvar(33) = 
+; fvar(34) = AI-LEARNING(Multiple Attack - Safety)
+; fvar(35) = AI-LEARNING(Random Move)
+; fvar(36) = AI-LEARNING(DBC)
+; fvar(37) = AI-LEARNING(DBC)
+; fvar(38) = GUARDBREAK一時判定用
+; fvar(39) = 
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;      基本データ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+; キャラクター基準値の設定
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Data]
+life              = 1000
+attack            = 100
+defence           = 100
+power             = 9999
+fall.defence_up   = 50
+liedown.Time      = 40
+airjuggle         = 18
+sparkno           = -1
+guard.sparkno     = -1
+KO.echo           = 0
+volume            = 255
+IntPersistIndex   = 0
+FloatPersistIndex = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+; サイズ指定
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Size]
+xscale           = 1
+yscale           = 1
+ground.back      = 13
+ground.front     = 19
+air.back         = 17
+air.front        = 14
+height           = 60
+attack.dist      = 160
+proj.attack.dist = 90
+proj.doscale     = 0
+head.pos         = -5,-90
+mid.pos          = -5,-60
+shadowoffset     = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+; 移動速度の設定
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Velocity]
+walk.fwd     = 1.6
+walk.back    = -1.2
+run.fwd      = 6,0
+run.back     = -6,3
+jump.neu     = 0, -9.88
+jump.back    = -1.6
+jump.fwd     = 2.4
+runjump.back = -2.7,-9.15
+runjump.fwd  = 2.7,-9.15
+airjump.neu  = 0, -9.88
+airjump.back = -1.6,-8
+airjump.fwd  = 2.4, -8
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+; 動作の設定
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Movement]
+airjump.num     = 1
+airjump.height  = 30
+yaccel          = .47
+stand.friction  = .85
+crouch.friction = .82
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　イントロ分岐
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 190]
+type        = S
+physics     = N
+ctrl        = 0
+
+[State 190, イントロ判定用]
+Type = VarRandom
+trigger1 = Time = 0
+v = 59
+range = 7
+ignorehitpause = 1
+persistent = 0
+
+[State 190, 新八専用イントロ]
+Type = ChangeState
+triggerAll = Time = 0
+trigger1 = Enemy(0),Name = "Shiki Tohno"        || Enemy(1),Name = "Shiki Tohno"
+trigger2 = Enemy(0),Name = "Shiki_Tohno"        || Enemy(1),Name = "Shiki_Tohno"
+trigger3 = Enemy(0),Name = "Tohno Shiki"        || Enemy(1),Name = "Tohno Shiki"
+trigger4 = Enemy(0),Name = "Tohno_Shiki"        || Enemy(1),Name = "Tohno_Shiki"
+value = 191
+
+[State 190, メルブラ吸血鬼専用イントロ]
+type = ChangeState
+triggerAll = Time = 0
+trigger1 = Enemy(0),Name = "Warachia"               || Enemy(1),Name = "Warachia"
+trigger2 = Enemy(0),Name = "Warakia"                || Enemy(1),Name = "Warakia"
+trigger3 = Enemy(0),Name = "Nrvnqsr Chaos"          || Enemy(1),Name = "Nrvnqsr Chaos"
+trigger4 = Enemy(0),Name = "Nrvnqsr_Chaos"          || Enemy(1),Name = "Nrvnqsr_Chaos"
+trigger5 = Enemy(0),Name = "Michael_Roa_Valdamjong" || Enemy(1),Name = "Michael_Roa_Valdamjong"
+trigger6 = Enemy(0),Name = "Arcueid Brunestud"      || Enemy(1),Name = "Arcueid Brunestud"
+trigger7 = Enemy(0),Name = "Arcueid_Brunestud"      || Enemy(1),Name = "Arcueid_Brunestud"
+trigger8 = Enemy(0),Name = "Arcueid"                || Enemy(1),Name = "Arcueid"
+trigger9 = Enemy(0),Name = "Akaitsuki"              || Enemy(1),Name = "Akaitsuki"
+trigger10 = Enemy(0),Name = "ARCHETYPE:EARTH"       || Enemy(1),Name = "ARCHETYPE:EARTH"
+value = 192
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　特殊イントロ分岐
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[State 190, 通常イントロ(行きますよ、セブン)]
+Type = ChangeState
+triggerAll = Time = [0,1]
+triggerAll = Enemy(0),Name = "Ciel" || Enemy(1),Name = "Ciel"
+trigger1 = Enemy(0),StateNo = 7000 || Enemy(1),StateNo = 7000
+value = 7000
+
+[State 190, 通常イントロ(雷霆降臨)]
+Type = ChangeState
+triggerAll = Time = [0,1]
+triggerAll = Enemy(0),Name = "Ciel" || Enemy(1),Name = "Ciel"
+trigger1 = Enemy(0),StateNo = 7004 || Enemy(1),StateNo = 7004
+value = 7004
+
+[State 190, 通常イントロ(行きますよ、セブン)]
+Type = ChangeState
+triggerAll = Time = [0,1]
+triggerAll = Enemy(0),Name = "Ciel" || Enemy(1),Name = "Ciel"
+trigger1 = var(59) = [0,3]
+value = 7000
+
+[State 190, 通常イントロ(雷霆降臨)]
+Type = ChangeState
+triggerAll = Time = [0,1]
+triggerAll = Enemy(0),Name = "Ciel" || Enemy(1),Name = "Ciel"
+trigger1 = var(59) != [0,3]
+value = 7004
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常イントロ分岐
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[State 190, 通常イントロ(行きますよ、セブン)]
+Type = ChangeState
+trigger1 = var(59) = [0,1]
+trigger1 = Time = 0
+value = 7000
+
+[State 190, 通常イントロ(真面目な先輩)]
+Type = ChangeState
+trigger1 = var(59) = 2
+trigger1 = Time = 0
+value = 7001
+
+[State 190, 通常イントロ(怖い先輩)]
+Type = ChangeState
+trigger1 = var(59) = [3,4]
+trigger1 = Time = 0
+value = 7002
+
+[State 190, 通常イントロ(雷霆降臨)]
+Type = ChangeState
+trigger1 = var(59) != [0,4]
+trigger1 = Time = 0
+value = 7004
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　新八専用イントロ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 191]
+type        = S
+anim        = 191
+velset      = 0, 0
+ctrl        = 0
+
+[State 191, 特殊状態(イントロ)]
+Type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 191, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 191, 初期ゲージ]
+Type = PowerSet
+trigger1 = RoundNo = 1
+trigger1 = Time = 1
+value = 1000
+
+[State 191, ボイス(さてさて)]
+Type = PlaySnd
+trigger1 = AnimElemTime(3) = 24
+value = s10, 3
+channel = 0
+
+[State 191, ボイス(懺悔は済みましたか)]
+Type = PlaySnd
+trigger1 = AnimElemTime(3) = 128
+value = s10, 6
+channel = 0
+
+[State 191, イントロ終了]
+Type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　メルブラ吸血鬼イントロ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 192]
+type        = S
+anim        = 192
+velset      = 0, 0
+ctrl        = 0
+
+[State 192, 透過用]
+Type = VarSet
+trigger1 = Time = 0
+trigger2 = AnimElemTime(14) >= 0
+v = 59
+value = 0
+ignorehitpause = 1
+
+[State 192, 透過用加算]
+Type = VarAdd
+trigger1 = var(59) < 256
+trigger1 = AnimElemTime(2) >= 0 && AnimElemTime(14) < 0
+v = 59
+value = 4
+ignorehitpause = 1
+
+[State 192, 透過]
+Type = Trans
+trigger1 = AnimElemTime(14) < 0
+trans = AddAlpha
+alpha = 0+var(59),256-var(59)
+
+[State 192, 透過]
+Type = Trans
+trigger1 = AnimElemTime(14) >= 0
+trans = AddAlpha
+alpha = 256,0
+
+[State 192, 特殊状態(イントロ)]
+Type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 192, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 192, 初期ゲージ]
+Type = PowerSet
+trigger1 = RoundNo = 1
+trigger1 = Time = 1
+value = 1000
+
+[State 192, ボイス(来なさい)]
+Type = PlaySnd
+trigger1 = AnimElemTime(7) = 0
+value = s10, 12
+channel = 0
+
+[State 192, ボイス(その魂…)]
+type = PlaySnd
+trigger1 = AnimElemTime(15) = 24
+value = s12, 22
+channel = 0
+
+[State 192, ボイス(微塵に帰します)]
+type = PlaySnd
+trigger1 = AnimElemTime(15) = 108
+value = s12, 23
+channel = 0
+
+[State 192, 発生音]
+type = PlaySnd
+trigger1 = AnimElemTime(1) >= 64 && AnimElemTime(1) < 72
+value = s3, 75
+channel = 4
+persistent = 4
+
+[State 192, 発生音]
+type = PlaySnd
+trigger1 = AnimElemTime(1) >= 64 && AnimElemTime(1) < 72
+value = s25, 2
+channel = 5
+persistent = 4
+
+[State 192, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(14) = 0
+value = s1, 11
+
+[State 192, 雷霆エフェクト召喚]
+Type = Helper
+trigger1 = AnimElemTime(1) = 64
+StateNo = 7210
+ID = 7210
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 192, 煙エフェクト召喚]
+Type = Helper
+trigger1 = AnimElemTime(1) = 72
+StateNo = 7211
+ID = 7211
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 192, 地平衝撃エフェクト召喚]
+Type = Helper
+trigger1 = AnimElemTime(1) = 72
+StateNo = 7212
+ID = 7212
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 192, イントロ終了]
+Type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常イントロ [ 行きますよ、セブン ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7000]
+type        = S
+anim        = 7000
+velset      = 0, 0
+ctrl        = 0
+
+[State 7000, 特殊状態(イントロ)]
+Type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 7000, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7000, 初期ゲージ]
+Type = PowerSet
+trigger1 = RoundNo = 1
+trigger1 = Time = 1
+value = 1000
+
+[State 7000, ボイス(行きますよ)]
+Type = PlaySnd
+trigger1 = AnimElemTime(6) = 0
+value = s10, 0
+channel = 0
+
+[State 7000, ボイス(セブン)]
+Type = PlaySnd
+trigger1 = AnimElemTime(14) = 2
+value = s10, 1
+channel = 0
+
+[State 7000, セブン召喚]
+Type = Helper
+trigger1 = AnimElemTime(1) = 0
+StateNo = 7200
+ID = 7200
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7000, イントロ終了]
+Type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常イントロ [ 真面目な先輩 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7001]
+type        = S
+anim        = 7001
+velset      = 0, 0
+ctrl        = 0
+
+[State 7001, 判定用]
+Type = VarRandom
+trigger1 = Time = 0
+v = 59
+range = 2
+ignorehitpause = 1
+persistent = 0
+
+[State 7001, 特殊状態(イントロ)]
+Type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 7001, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7001, 初期ゲージ]
+Type = PowerSet
+trigger1 = RoundNo = 1
+trigger1 = Time = 1
+value = 1000
+
+[State 7001, ボイス(さてさて)]
+Type = PlaySnd
+trigger1 = var(59) = 0
+trigger1 = AnimElemTime(3) = 0
+value = s10, 3
+channel = 0
+
+[State 7001, ボイス(始めますか)]
+Type = PlaySnd
+trigger1 = var(59) = 0
+trigger1 = AnimElemTime(4) = 0
+value = s10, 4
+channel = 0
+
+[State 7001, ボイス(色々)]
+Type = PlaySnd
+trigger1 = var(59) = 1
+trigger1 = AnimElemTime(2) = 0
+value = s10, 4+random%8
+channel = 0
+
+[State 7001, ボイス(来なさい)]
+Type = PlaySnd
+trigger1 = var(59) = 2
+trigger1 = AnimElemTime(2) = 0
+value = s10, 12
+channel = 0
+
+[State 7001, ボイス(能書きは結構です)]
+Type = PlaySnd
+trigger1 = var(59) = 2
+trigger1 = AnimElemTime(3) = 40
+value = s10, 13
+channel = 0
+
+[State 7001, イントロ終了]
+Type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常イントロ [ 怖い先輩 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7002]
+type        = S
+anim        = 7002
+velset      = 0, 0
+ctrl        = 0
+
+[State 7002, 判定用]
+Type = VarRandom
+trigger1 = Time = 0
+v = 59
+range = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7002, 特殊状態(イントロ)]
+Type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 7002, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7002, 初期ゲージ]
+Type = PowerSet
+trigger1 = RoundNo = 1
+trigger1 = Time = 1
+value = 1000
+
+[State 7002, ボイス(来なさい)]
+Type = PlaySnd
+trigger1 = var(59) = 0
+trigger1 = Time = 48
+value = s10, 12
+channel = 0
+
+[State 7002, ボイス(覚悟は出来ていますね)]
+Type = PlaySnd
+trigger1 = var(59) != 0
+trigger1 = Time = 48
+value = s10, 9
+channel = 0
+
+[State 7002, ステート移行]
+Type = ChangeState
+trigger1 = var(59) = 0
+trigger1 = Time > 88
+trigger2 = var(59) != 0
+trigger2 = Time > 138
+value = 7003
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常イントロ [ 怖い先輩 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7003]
+type        = S
+anim        = 7003
+velset      = 0, 0
+ctrl        = 0
+
+[State 7003, 特殊状態(イントロ)]
+Type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 7003, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7003, 初期ゲージ]
+Type = PowerSet
+trigger1 = RoundNo = 1
+trigger1 = Time = 1
+value = 1000
+
+[State 7003, ボイス(能楽は結構です)]
+Type = PlaySnd
+trigger1 = var(59) = 0
+trigger1 = AnimElemTime(1) = 48
+value = s10, 13
+channel = 0
+
+[State 7003, ボイス(引かないのなら潰すだけです)]
+Type = PlaySnd
+trigger1 = var(59) != 0
+trigger1 = AnimElemTime(1) = 48
+value = s10, 10
+channel = 0
+
+[State 7003, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(1) = 1
+value = s1, 11
+
+[State 7003, イントロ終了]
+Type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常イントロ [ 雷霆降臨 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7004]
+type        = S
+anim        = 7004
+velset      = 0, 0
+ctrl        = 0
+
+[State 7004, 透過用]
+Type = VarSet
+trigger1 = Time = 0
+trigger2 = AnimElemTime(14) >= 0
+v = 59
+value = 0
+ignorehitpause = 1
+
+[State 7004, 透過用加算]
+Type = VarAdd
+trigger1 = var(59) < 256
+trigger1 = AnimElemTime(2) >= 0 && AnimElemTime(14) < 0
+v = 59
+value = 4
+ignorehitpause = 1
+
+[State 7004, 透過]
+Type = Trans
+trigger1 = AnimElemTime(14) < 0
+trans = AddAlpha
+alpha = 0+var(59),256-var(59)
+
+[State 7004, 透過]
+Type = Trans
+trigger1 = AnimElemTime(14) >= 0
+trans = AddAlpha
+alpha = 256,0
+
+[State 7004, 特殊状態(イントロ)]
+Type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 7004, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7004, 初期ゲージ]
+Type = PowerSet
+trigger1 = RoundNo = 1
+trigger1 = Time = 1
+value = 1000
+
+[State 7004, ボイス(来なさい)]
+Type = PlaySnd
+trigger1 = AnimElemTime(7) = 0
+value = s10, 12
+channel = 0
+
+[State 7004, ボイス(その魂…)]
+type = PlaySnd
+trigger1 = AnimElemTime(15) = 24
+value = s12, 22
+channel = 0
+
+[State 7004, ボイス(微塵に帰します)]
+type = PlaySnd
+trigger1 = AnimElemTime(15) = 108
+value = s12, 23
+channel = 0
+
+[State 7004, 発生音]
+type = PlaySnd
+trigger1 = AnimElemTime(1) >= 64 && AnimElemTime(1) < 72
+value = s3, 75
+channel = 4
+persistent = 4
+
+[State 7004, 発生音]
+type = PlaySnd
+trigger1 = AnimElemTime(1) >= 64 && AnimElemTime(1) < 72
+value = s25, 2
+channel = 5
+persistent = 4
+
+[State 7004, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(14) = 0
+value = s1, 11
+
+[State 7004, 雷霆エフェクト召喚]
+Type = Helper
+trigger1 = AnimElemTime(1) = 64
+StateNo = 7210
+ID = 7210
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7004, 煙エフェクト召喚]
+Type = Helper
+trigger1 = AnimElemTime(1) = 72
+StateNo = 7211
+ID = 7211
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7004, 地平衝撃エフェクト召喚]
+Type = Helper
+trigger1 = AnimElemTime(1) = 72
+StateNo = 7212
+ID = 7212
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7004, イントロ終了]
+Type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　勝利ポーズ分岐
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 180]
+type        = S
+physics     = N
+ctrl        = 0
+
+[State 180, 勝利ポーズ判定用]
+Type = VarRandom
+trigger1 = Time = 0
+v = 59
+range = 3
+ignorehitpause = 1
+persistent = 0
+
+[State 180, 遠野家専用]
+Type = ChangeState
+triggerAll = MatchOver != 0
+triggerAll = Time = 0
+trigger1 = Enemy(0),Name = "Shiki Tohno"        || Enemy(1),Name = "Shiki Tohno"
+trigger2 = Enemy(0),Name = "Shiki_Tohno"        || Enemy(1),Name = "Shiki_Tohno"
+trigger3 = Enemy(0),Name = "Tohno Shiki"        || Enemy(1),Name = "Tohno Shiki"
+trigger4 = Enemy(0),Name = "Tohno_Shiki"        || Enemy(1),Name = "Tohno_Shiki"
+trigger5 = Enemy(0),Name = "Akiha Tohno"        || Enemy(1),Name = "Akiha Tohno"
+trigger6 = Enemy(0),Name = "Akiha_Tohno"        || Enemy(1),Name = "Akiha_Tohno"
+trigger7 = Enemy(0),Name = "Tohno_Akiha"        || Enemy(1),Name = "Tohno_Akiha"
+trigger8 = Enemy(0),Name = "Akiha_Vermilion"    || Enemy(1),Name = "Akiha_Vermilion"
+trigger9 = Enemy(0),Name = "Akiha"              || Enemy(1),Name = "Akiha"
+trigger10 = Enemy(0),Name = "Kohaku"            || Enemy(1),Name = "Kohaku"
+trigger11 = Enemy(0),Name = "Hisui"             || Enemy(1),Name = "Hisui"
+value = 181
+
+[State 180, アーパー吸血鬼専用]
+type = ChangeState
+triggerAll = MatchOver != 0
+triggerAll = Time = 0
+trigger1 = Enemy(0),Name = "Arcueid Brunestud"      || Enemy(1),Name = "Arcueid Brunestud"
+trigger2 = Enemy(0),Name = "Arcueid_Brunestud"      || Enemy(1),Name = "Arcueid_Brunestud"
+trigger3 = Enemy(0),Name = "Arcueid"                || Enemy(1),Name = "Arcueid"
+trigger4 = Enemy(0),Name = "Akaitsuki"              || Enemy(1),Name = "Akaitsuki"
+trigger5 = Enemy(0),Name = "ARCHETYPE:EARTH"        || Enemy(1),Name = "ARCHETYPE:EARTH"
+value = 182
+
+[State 180, メルブラ吸血鬼専用]
+type = ChangeState
+triggerAll = MatchOver != 0
+triggerAll = Time = 0
+trigger1 = Enemy(0),Name = "Warachia"               || Enemy(1),Name = "Warachia"
+trigger2 = Enemy(0),Name = "Warakia"                || Enemy(1),Name = "Warakia"
+trigger3 = Enemy(0),Name = "Nrvnqsr Chaos"          || Enemy(1),Name = "Nrvnqsr Chaos"
+trigger4 = Enemy(0),Name = "Nrvnqsr_Chaos"          || Enemy(1),Name = "Nrvnqsr_Chaos"
+value = 183
+
+[State 180, さっちん専用]
+type = ChangeState
+triggerAll = MatchOver != 0
+triggerAll = Time = 0
+trigger1 = Enemy(0),Name = "Satsuki Yumiduka"   || Enemy(1),Name = "Satsuki Yumiduka"
+trigger2 = Enemy(0),Name = "Satsuki_Yumiduka"   || Enemy(1),Name = "Satsuki_Yumiduka"
+trigger3 = Enemy(0),Name = "Yumiduka_Satsuki"   || Enemy(1),Name = "Yumiduka_Satsuki"
+trigger4 = Enemy(0),Name = "satsuki EX"         || Enemy(1),Name = "satsuki EX"
+value = 184
+
+[State 180, ネロアさん吸血鬼専用]
+type = ChangeState
+triggerAll = MatchOver != 0
+triggerAll = Time = 0
+trigger1 = Enemy(0),Name = "Michael_Roa_Valdamjong" || Enemy(1),Name = "Michael_Roa_Valdamjong"
+value = 185
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　特殊勝利ポーズ分岐
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[State 180, 試合勝利(怖い冗談を言う先輩)]
+Type = ChangeState
+triggerAll = MatchOver != 0
+triggerAll = Time = 0
+trigger1 = Enemy(0),Name = "USHIROMIYA ANGE"   || Enemy(1),Name = "USHIROMIYA ANGE"
+trigger2 = Enemy(0),Name = "USHIROMIYA_ANGE"   || Enemy(1),Name = "USHIROMIYA_ANGE"
+value = 7121
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　辛勝・快勝・完全勝利ポーズ分岐
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[State 180, 完全勝利]
+Type = ChangeState
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = 7100
+
+[State 180, 快勝]
+Type = ChangeState
+trigger1 = Life >= LifeMax*0.85 && Life < LifeMax
+trigger1 = Time = 0
+value = 7101
+
+[State 180, 試合勝利(クールビューティーな先輩)]
+Type = ChangeState
+trigger1 = MatchOver != 0
+trigger1 = Life >= LifeMax*0.25 && Life < LifeMax*0.85
+trigger1 = Time = 0
+value = 7124
+
+[State 180, 辛勝]
+Type = ChangeState
+trigger1 = Life < LifeMax*0.25 && Life > 0
+trigger1 = Time = 0
+value = 7102
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常勝利ポーズ分岐
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[State 180, 試合勝利(セブン離脱)]
+Type = ChangeState
+trigger1 = MatchOver != 0
+trigger1 = Time = 0
+value = 7120
+
+[State 180, 通常勝利(一息)]
+Type = ChangeState
+trigger1 = var(59) = [0,2]
+trigger1 = Time = 0
+value = 7110
+
+[State 180, 通常勝利(眼鏡をかける)]
+Type = ChangeState
+trigger1 = var(59) != [0,2]
+trigger1 = Time = 0
+value = 7111
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　新八専用勝利ポーズ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 181]
+type        = S
+anim        = 181
+velset      = 0, 0
+ctrl        = 0
+
+[State 181, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 280
+flag = RoundNotOver
+
+[State 181, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 181, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 181, ボイス(まったく)]
+Type = PlaySnd
+trigger1 = AnimElemTime(4) = 0
+value = s11, 1
+
+[State 181, ボイス(手間をかけさせるんだから)]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 24
+value = s11, 2
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　アーパー専用勝利ポーズ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 182]
+type        = S
+anim        = 182
+velset      = 0, 0
+ctrl        = 0
+
+[State 182, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 580
+flag = RoundNotOver
+
+[State 182, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 182, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 182, ボイス(もうおしまいですかぁ？)]
+Type = PlaySnd
+trigger1 = AnimElemTime(3) = 0
+value = s11, 21
+
+[State 182, ボイス(まったく弛んでますね)]
+Type = PlaySnd
+trigger1 = AnimElemTime(25) = 0
+value = s11, 22
+
+[State 182, ボイス(眼鏡爆発しろに甘えすぎてry)]
+Type = PlaySnd
+trigger1 = AnimElemTime(27) = 128
+value = s11, 23
+
+[State 182, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(15) = 0
+value = s2, 11
+
+[State 182, セブン召喚]
+Type = Helper
+trigger1 = AnimElemTime(15) = 0
+StateNo = 7202
+ID = 7202
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　メルブラ吸血鬼専用勝利ポーズ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 183]
+type        = S
+anim        = 183
+velset      = 0, 0
+ctrl        = 0
+
+[State 183, 透過用]
+Type = VarSet
+trigger1 = Time = 0
+trigger2 = var(59) != 0
+trigger2 = Time < 630
+v = 59
+value = 0
+ignorehitpause = 1
+
+[State 183, 透過用加算]
+Type = VarAdd
+trigger1 = var(59) < 256
+trigger1 = Time >= 630
+v = 59
+value = 8
+ignorehitpause = 1
+
+[State 183, 透過]
+Type = Trans
+trigger1 = Time >= 630
+trans = AddAlpha
+alpha = 256-var(59),0+var(59)
+
+[State 183, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 760
+flag = RoundNotOver
+
+[State 183, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 183, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 183, ボイス(流石は二十七姐)]
+Type = PlaySnd
+trigger1 = AnimElemTime(6) = 0
+value = s11, 24
+
+[State 183, ボイス(単純なry)]
+Type = PlaySnd
+trigger1 = Time = 178
+value = s11, 25
+
+[State 183, ボイス(今回は撃退ry)]
+Type = PlaySnd
+trigger1 = Time = 358
+value = s11, 26
+
+[State 183, ボイス(次はry)]
+Type = PlaySnd
+trigger1 = Time = 478
+value = s11, 27
+
+[State 183, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 0
+value = s1, 11
+ignorehitpause = 1
+persistent = 0
+
+[State 183, 効果音]
+Type = PlaySnd
+trigger1 = Time = 630
+value = s3, 52
+
+[State 183, テレポート召喚]
+Type = Helper
+trigger1 = Time = 630
+Stateno = 7213
+ID = 7213
+pos = -4, -48
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　さっちん専用勝利ポーズ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 184]
+type        = S
+anim        = 184
+velset      = 0, 0
+ctrl        = 0
+
+[State 184, 透過用]
+Type = VarSet
+trigger1 = Time = 0
+trigger2 = var(59) != 0
+trigger2 = Time < 350
+v = 59
+value = 0
+ignorehitpause = 1
+
+[State 184, 透過用加算]
+Type = VarAdd
+trigger1 = var(59) < 256
+trigger1 = Time >= 350
+v = 59
+value = 8
+ignorehitpause = 1
+
+[State 184, 透過]
+Type = Trans
+trigger1 = Time >= 350
+trans = AddAlpha
+alpha = 256-var(59),0+var(59)
+
+[State 184, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 480
+flag = RoundNotOver
+
+[State 184, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 184, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 184, ボイス(今回は見逃しますが)]
+Type = PlaySnd
+trigger1 = AnimElemTime(6) = 0
+value = s11, 28
+
+[State 184, ボイス(次はありませんよ)]
+Type = PlaySnd
+trigger1 = Time = 148
+value = s11, 29
+
+[State 184, ボイス(弓塚さん)]
+Type = PlaySnd
+trigger1 = Time = 258
+value = s11, 30
+
+[State 184, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 0
+value = s1, 11
+ignorehitpause = 1
+persistent = 0
+
+[State 184, 効果音]
+Type = PlaySnd
+trigger1 = Time = 350
+value = s3, 52
+
+[State 184, テレポート召喚]
+Type = Helper
+trigger1 = Time = 350
+Stateno = 7213
+ID = 7213
+pos = -4, -48
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　ネロアさん専用勝利ポーズ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 185]
+type        = S
+anim        = 185
+velset      = 0, 0
+ctrl        = 0
+
+[State 185, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 280
+flag = RoundNotOver
+
+[State 185, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 185, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 185, ボイス(消えなさい)]
+Type = PlaySnd
+trigger1 = Time = 34
+value = s11, 12
+
+[State 185, ボイス(つまらない決着でした)]
+Type = PlaySnd
+trigger1 = Time = 118
+value = s11, 11
+
+[State 185, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 0
+value = s1, 11
+ignorehitpause = 1
+persistent = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　完全勝利ポーズ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7100]
+type        = S
+anim        = 7100
+velset      = 0, 0
+ctrl        = 0
+
+[State 7100, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 220
+flag = RoundNotOver
+
+[State 7100, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7100, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 7100, ボイス(あなたでは私に勝てない)]
+Type = PlaySnd
+trigger1 = Time = 66
+value = s11, 15
+
+[State 7100, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 0
+value = s1, 11
+ignorehitpause = 1
+persistent = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　快勝ポーズ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7101]
+type        = S
+anim        = 7101
+velset      = 0, 0
+ctrl        = 0
+
+[State 7101, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 300
+flag = RoundNotOver
+
+[State 7101, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7101, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 7101, ボイス(まったく)]
+Type = PlaySnd
+trigger1 = Time = 42
+value = s11, 1
+
+[State 7101, ボイス(手間をかけさせるんですから)]
+Type = PlaySnd
+trigger1 = Time = 118
+value = s11, 2
+
+[State 7101, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 0
+value = s1, 11
+ignorehitpause = 1
+persistent = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　辛勝ポーズ
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7102]
+type        = S
+anim        = 7102
+velset      = 0, 0
+ctrl        = 0
+
+[State 7102, イントロ判定用]
+Type = VarRandom
+trigger1 = Time = 0
+v = 59
+range = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7102, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 220
+flag = RoundNotOver
+
+[State 7102, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7102, ボイス(くっ)]
+Type = PlaySnd
+trigger1 = Time = 24
+value = s11, 20
+
+[State 7102, ボイス(危ない危ない)]
+Type = PlaySnd
+trigger1 = var(59) = 0
+trigger1 = Time = 88
+value = s11, 9
+
+[State 7102, ボイス(やりますね)]
+Type = PlaySnd
+trigger1 = var(59) != 0
+trigger1 = Time = 88
+value = s11, 17
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常勝利ポーズ [ 一息 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7110]
+type        = S
+anim        = 7110
+velset      = 0, 0
+ctrl        = 0
+
+[State 7110, 判定用]
+Type = VarRandom
+trigger1 = Time = 0
+v = 59
+range = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7110, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = var(59) = 0  && Time < 320
+trigger2 = var(59) != 0 && Time < 280
+flag = RoundNotOver
+
+[State 7110, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7110, ボイス(まったく)]
+Type = PlaySnd
+trigger1 = var(59) = 0
+trigger1 = AnimElemTime(10) = 0
+value = s11, 1
+
+[State 7110, ボイス(手間をかけさせるんだから)]
+Type = PlaySnd
+trigger1 = var(59) = 0
+trigger1 = AnimElemTime(11) = 72
+value = s11, 2
+
+[State 7110, ボイス(ふむ)]
+Type = PlaySnd
+trigger1 = var(59) != 0
+trigger1 = AnimElemTime(10) = 0
+value = s11, 3
+
+[State 7110, ボイス(終わりですか？)]
+Type = PlaySnd
+trigger1 = var(59) != 0
+trigger1 = AnimElemTime(11) = 72
+value = s11, 10
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　通常勝利ポーズ [ 眼鏡をかける ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7111]
+type        = S
+anim        = 7111
+velset      = 0, 0
+ctrl        = 0
+
+[State 7111, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 250
+flag = RoundNotOver
+
+[State 7111, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7111, ボイス(ふむ)]
+Type = PlaySnd
+trigger1 = AnimElemTime(4) = 0
+value = s11, 3
+
+[State 7111, ボイス(こんな所ですか)]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 24
+value = s11, 4
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　試合勝利ポーズ [ セブン離脱 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7120]
+type        = S
+anim        = 7120
+velset      = 0, 0
+ctrl        = 0
+
+[State 7120, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 310
+flag = RoundNotOver
+
+[State 7120, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7120, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 7120, ボイス(おしまいです)]
+Type = PlaySnd
+trigger1 = AnimElemTime(12) = 0
+value = s11 , 7
+
+[State 7120, ボイス(逃げるなら逃げちゃって下さいね)]
+Type = PlaySnd
+trigger1 = AnimElemTime(24) = 0
+value = s11 , 8
+
+[State 7120, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(15) = 0
+value = s2, 11
+
+[State 7120, セブン召喚]
+Type = Helper
+trigger1 = AnimElemTime(15) = 0
+StateNo = 7202
+ID = 7202
+pos = 0, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　試合勝利ポーズ [ 冗談を言う先輩 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7121]
+type        = S
+physics     = S
+anim        = 7121
+velset      = 0, 0
+ctrl        = 0
+
+[State 7121, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 999
+flag = RoundNotOver
+
+[State 7121, 透過用]
+type = VarSet
+trigger1 = AnimElemTime(1) >= 0 && AnimElemTime(3) < 12
+trigger2 = AnimElemTime(2) >= 0 && AnimElemTime(3) < 0
+trigger3 = AnimElemTime(3) > 16
+v = 20
+value = 0
+ignorehitpause = 1
+
+[State 7121, 透過用]
+type = VarAdd
+triggerAll = var(20) < 256
+trigger1 = AnimElemTime(1) >= 12 && AnimElemTime(2) < 0
+trigger2 = AnimElemTime(3) >= 0 && AnimElemTime(3) < 16
+v = 20
+value = 16
+ignorehitpause = 1
+
+[State 7121, 透過]
+Type = Trans
+trigger1 = AnimElemTime(1) >= 12 && AnimElemTime(3) < 0
+trans = AddAlpha
+alpha = 256-var(20),0+var(20)
+
+[State 7121, 透過]
+Type = Trans
+trigger1 = AnimElemTime(3) >= 0 && AnimElemTime(3) <= 16
+trans = AddAlpha
+alpha = 0+var(20),256-var(20)
+
+[State 7121, 透過]
+Type = Trans
+trigger1 = AnimElemTime(3) >= 16
+trans = AddAlpha
+alpha = 256,0
+
+[State 7121, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 7121, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(1) = 20
+trigger2 = AnimElemTime(3) = 0
+value = s3, 48
+channel = 4
+
+[State 7121, 移動位置]
+type = PosSet
+trigger1 = AnimElemTime(3) = 0
+trigger1 = facing = 1
+x = EnemyNear,Pos X - 80
+y = 0
+
+[State 7121, 移動位置]
+type = PosSet
+trigger1 = AnimElemTime(3) = 0
+trigger1 = facing != 1
+x = EnemyNear,Pos X + 80
+y = 0
+
+[State 7121, 瞬間移動エフェクト召喚]
+type = Helper
+trigger1 = AnimElemTime(1) = 20
+trigger2 = AnimElemTime(3) = 8
+Stateno = 6190
+ID = 6190
+pos = -8, 24
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+
+[State 7121, ステート移行]
+Type = ChangeState
+trigger1 = AnimTime = 0
+trigger2 = AnimElemTime(1) < 12
+trigger2 = Enemy,Pos X < Pos X + 150
+trigger2 = facing = 1
+trigger3 = AnimElemTime(1) < 12
+trigger3 = Enemy,Pos X > Pos X - 150
+trigger3 = facing = -1
+value = 7122
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　試合勝利ポーズ [ 冗談を言う先輩 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7122]
+type        = S
+anim        = 7122
+velset      = 0, 0
+ctrl        = 0
+
+[State 7122, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 999
+flag = RoundNotOver
+
+[State 7122, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7122, ボイス(丈夫じゃないですか)]
+Type = PlaySnd
+trigger1 = Time = 42
+value = s11 , 18
+
+[State 7122, ボイス(まだ息はありますね)]
+Type = PlaySnd
+trigger1 = Time = 188
+value = s11 , 19
+
+[State 7122, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 0
+value = s1, 11
+ignorehitpause = 1
+persistent = 0
+
+[State 7122, セブン召喚]
+Type = Helper
+trigger1 = Time = 248
+StateNo = 7203
+ID = 7203
+pos = -12, 0
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7122, 通常イントロ(お辞儀)]
+Type = ChangeState
+trigger1 = Time > 308
+value = 7123
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　試合勝利ポーズ [ 冗談を言う先輩 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7123]
+type        = S
+anim        = 7123
+velset      = 0, 0
+ctrl        = 0
+
+[State 7123, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = Time < 400
+flag = RoundNotOver
+
+[State 7123, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7123, ボイス(な～んて)]
+Type = PlaySnd
+trigger1 = AnimElemTime(11) = 0
+value = s11 , 5
+
+[State 7123, ボイス(ちょっと驚かしただけですよ)]
+Type = PlaySnd
+trigger1 = AnimElemTime(19) = 28
+value = s11 , 6
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　試合勝利ポーズ [ クールビューティーな先輩 ]
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 7124]
+type        = S
+anim        = 7124
+velset      = 0, 0
+ctrl        = 0
+
+[State 7124, 判定用]
+Type = VarRandom
+trigger1 = Time = 0
+v = 58
+range = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 7124, 判定用]
+Type = VarSet
+trigger1 = Time = 0
+trigger1 = Life < LifeMax*0.5
+v = 58
+value = 0
+ignorehitpause = 1
+persistent = 0
+
+[State 7124, 透過用]
+Type = VarSet
+trigger1 = Time = 0
+trigger2 = var(58) != 0
+trigger2 = var(59) != 0
+trigger2 = Time < 350
+v = 59
+value = 0
+ignorehitpause = 1
+
+[State 7124, 透過用加算]
+Type = VarAdd
+trigger1 = var(58) != 0
+trigger1 = var(59) < 256
+trigger1 = Time >= 350
+v = 59
+value = 8
+ignorehitpause = 1
+
+[State 7124, 透過]
+Type = Trans
+trigger1 = var(58) != 0
+trigger1 = Time >= 350
+trans = AddAlpha
+alpha = 256-var(59),0+var(59)
+
+[State 7124, 特殊状態(勝利ポーズ時間)]
+Type = AssertSpecial
+trigger1 = var(58) = 0  && Time < 550
+trigger2 = var(58) != 0 && Time < 480
+flag = RoundNotOver
+
+[State 7124, 無敵]
+Type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 7124, パーフェクトアナウンス]
+Type = PlaySnd
+trigger1 = Life = LifeMax
+trigger1 = Time = 0
+value = s26, 7
+
+[State 7124, 効果音]
+Type = PlaySnd
+trigger1 = AnimElemTime(8) = 0
+value = s1, 11
+ignorehitpause = 1
+persistent = 0
+
+[State 7124, ボイス(これが互いの実力差です)]
+Type = PlaySnd
+trigger1 = AnimElemTime(6) = 0
+value = s11, 31
+
+[State 7124, ボイス(埋葬機関七位の名)]
+Type = PlaySnd
+trigger1 = var(58) = 0
+trigger1 = Time = 198
+value = s11, 32
+
+[State 7124, ボイス(伊達ではないと理解できました？)]
+Type = PlaySnd
+trigger1 = var(58) = 0
+trigger1 = Time = 338
+value = s11, 33
+
+[State 7124, ボイス(あなたでは私を殺せない)]
+Type = PlaySnd
+trigger1 = var(58) != 0
+trigger1 = Time = 198
+value = s11, 34
+
+[State 7124, 効果音]
+Type = PlaySnd
+trigger1 = var(58) != 0
+trigger1 = Time = 350
+value = s3, 52
+
+[State 7124, テレポート召喚]
+Type = Helper
+trigger1 = var(58) != 0
+trigger1 = Time = 350
+Stateno = 7213
+ID = 7213
+pos = -4, -48
+postype = P1
+ownpal = 1
+ignorehitpause = 1
+persistent = 0
+
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+;　iwakick専用
+;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Statedef 100191]; VS iwakick
+type = L
+ctrl = 0
+velset = 0,0
+anim = 0
+
+[State 100191, 2]
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[state 100191]
+type = hitby
+trigger1 = numenemy
+trigger1 = enemy,authorname = "iwakick"
+value = S, HT
+
+[State 100191, 3]
+type = ChangeState
+trigger1 = roundno = 1
+trigger1 = time = 31
+value = 190
+
+[State 100191, 3]
+type = ChangeState
+trigger1 = roundno > 1
+trigger1 = time = 31
+value = 5900
+
+;---------------------------------------------------------------------------
+[Statedef 100192]; VS iwakick helper
+type = L
+ctrl = 0
+velset = 0,0
+anim = 0
+
+[state 191]
+type = hitby
+trigger1 = numenemy
+trigger1 = enemy,authorname = "iwakick"
+value = S, HT
+
+[State 191, 2]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+flag2 = invisible
+
+[State 191, 3]
+type = destroyself
+triggerall = ishelper
+trigger1 = roundstate > 1
+trigger2 = root,alive = 0
+
+;---------------------------------------------------------------------------
+[Statedef 100194]; VS iwakick helper
+type = S
+ctrl = 0
+velset = 0,0
+anim = 0
+SprPriority = 65
+
+[state a]
+type = assertspecial
+trigger1 = enemy,anim != 183
+flag = invisible
+
+[state a]
+type = turn
+triggerall = enemy,var(16) = 0
+trigger1 = root,teamside = 1
+trigger1 = facing = -1
+trigger2 = root,teamside = 2
+trigger2 = facing = 1
+
+[state a]
+type = varset
+trigger1 = time = 0
+v = 0
+value = floor(screenpos y)
+persistent = 0
+
+[state a]
+type = posset
+trigger1 = time = 1
+y = var(0) - var(0)
+
+[state a]
+type = varset
+trigger1 = time = 2
+v = 0
+value = 240 - floor(screenpos y)
+persistent = 0
+
+[state a]
+type = posset
+trigger1 = time = 3
+x = -facing * 60
+y = -20 + var(0)
+
+;---------------------------------------------------------
+;VS処理
+[state a]
+type = posset
+trigger1 = enemy,var(16)
+x = facing * 240 + (var(1) * facing)
+y = -180 + var(0) + var(2)
+persistent = 0
+
+[state a]
+type = posadd
+trigger1 = enemy,var(16) = [21,50]
+x = -facing * facing * 16
+y = -2
+
+[state a]
+type = posset
+trigger1 = enemy,var(16) = 51
+x = -facing * 240 + (var(1) * facing)
+y = -240 + var(0) + var(2)
+
+[state a]
+type = posadd
+trigger1 = enemy,var(16) > 80
+x = 0.1
+
+[state a]
+type = SprPriority
+trigger1 = enemy,var(16)
+value = 54
+
+[State 191, 3]
+type = destroyself
+triggerall = ishelper
+trigger1 = roundstate > 1
+trigger2 = root,alive = 0
+
+;下記任意と明記された部分は対応者様側で任意の数値を代入して下さい。
+;=========================================================
+;ポージング
+[state a]
+type = changeanim
+trigger1 = enemy,anim = 183
+value = 0;任意
+persistent = 0
+
+;↓下記changeanimは自由に編集して構いません。
+[state a];任意(最後のアニメを繰り返したい、停止したい場合等)
+type = changeanim
+trigger1 = enemy,anim = 183
+trigger1 = animtime = -1
+value = anim
+elem = animelemno(1)
+
+;=========================================================
+;VS処理
+[state a];カットインアニメのX軸調整(任意)
+type = varset
+trigger1 = 1
+v = 1
+value = -30
+
+[state a];カットインアニメのY軸調整(任意)
+type = varset
+trigger1 = 1
+v = 2
+value = -15
+
+[state a];任意(カットインアニメがない場合はポートレイトで代用、もしくは対応者様側で他画像指定して下さい)
+type = changeanim
+trigger1 = enemy,var(16)
+value = 20008
+persistent = 0
+
+[state a];任意
+type = angledraw
+trigger1 = enemy,var(16)
+scale = 0.5,0.5

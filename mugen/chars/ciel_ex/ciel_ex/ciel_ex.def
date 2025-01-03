@@ -1,0 +1,24 @@
+[Info]
+name         = "Ciel"
+displayname  = "Ciel"
+mugenversion = 04,14,2001
+author       = "IQS"
+pal.defaults = 1
+
+[Files]
+cmd      = ciel_ex.cmd
+cns      = ciel_ex.cns
+st       = ciel_ex.cns
+st1      = helper.cns
+st2      = helper2.cns
+st3      = ciel_ex00.cns
+st4      = ciel_ex01.cns
+st5      = ciel_ex02.cns
+st6      = ciel_ex03.cns
+st7      = ciel_ex04.cns
+st8      = ciel_ex05.cns
+stcommon = common2.cns
+sprite   = ciel_ex.sff
+anim     = ciel_ex.air
+sound    = ciel_ex.snd
+pal1     = act/ciel01.act
