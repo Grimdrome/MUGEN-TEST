@@ -1,0 +1,28 @@
+
+A - Normal Hit
+
+B - Psychic Hit
+
+C - Psychic Explosive
+
+S - Power Charge
+
+SPECIALS:
+
+D,DF,F,a - Telekinesis Push
+
+D,DB,B,a - Telekinesis
+
+D,DF,F,b - Rocks barrage
+
+D,DB,B,b - Psycho Stun!!!
+
+D,DF,F,c - Psycho Wave!
+
+D,DB,B,c - OverKill Grab
+
+B,DB,D,DF,F,c - Kamehameha
+
+SUPER: 
+
+D,DF,F,D,DF,F,a+b - ???%!

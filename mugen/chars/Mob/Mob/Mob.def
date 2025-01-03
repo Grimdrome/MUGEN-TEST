@@ -1,0 +1,29 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name ="Mob"
+displayname ="Mob"
+versiondate =12/06/2017
+mugenversion =1.0
+author ="Lemonstream"
+pal.defaults =1	
+
+[Files]
+sprite =Mob.sff
+anim =Mob.air
+sound =Mob.snd
+cmd =Mob.cmd
+cns =Mob.cns
+stcommon =common1.cns
+st =Mob.cns
+pal1=1.act
+st1=IA.cns
+st2=Specials.cns
+st3=Supers.cns
+
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 
